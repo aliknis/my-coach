@@ -1,2 +1,2 @@
-# my_coach
+# My Coach
 Your gym assistant
