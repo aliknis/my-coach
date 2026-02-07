@@ -1,35 +1,45 @@
-
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>Login — My Coach</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Login — My Coach</title>
 
-		<!-- link to css -->
-		<link rel="stylesheet" href="auth.css">
-	</head>
-	<body>
-		<main>
-			<div class="auth-container">
-				<h1>Sign in to My Coach</h1>
-				<form id="loginForm" >
-					<div class="field">
-						<label for="email">Email</label>
-						<input id="email" name="email" type="email" placeholder="you@example.com" required>
-					</div>
+    <!-- link to css -->
+    <link rel="stylesheet" href="css/auth.css" />
+  </head>
+  <body>
+    <main>
+      <div class="auth-container">
+        <h1>Sign in to My Coach</h1>
+        <form id="loginForm">
+          <div class="field">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
 
-					<div class="field">
-						<label for="password">Password</label>
-						<input id="password" name="password" type="password" placeholder="Your password" required>
-					</div>
-					<button type="submit">Sign in</button>
-				</form>
-				<div class="signup">
-					Don't have an account? <a href="signup.html">Sign up</a>
-				</div>
-			</div>
-		</main>
-
-	</body>
+          <div class="field">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Your password"
+              required
+            />
+          </div>
+          <button type="submit">Sign in</button>
+        </form>
+        <div class="signup">
+          Don't have an account? <a href="signup.html">Sign up</a>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
