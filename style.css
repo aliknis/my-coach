@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #EEF1F6;  /* Light blue-gray background */
+    color: #1a2a32;       /* Dark blue-gray for text */
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #A5DBDD 0%, #EEF1F6 50%, #D3E1E2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(64, 124, 135, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(213, 225, 226, 0.15) 0%, transparent 40%);
+}
+
+.hero-content {
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #407C87;  /* Deep ocean blue */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: #5a7a84;  /* Muted teal-gray */
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 500;
+}
+
+/* Single Get Started Button */
+.btn-get-started {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #407C87;  /* Deep ocean blue */
+    color: white;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(64, 124, 135, 0.3);
+    border: 2px solid #407C87;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-get-started:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(64, 124, 135, 0.4);
+    background: #356872;  /* Slightly darker shade */
+    border-color: #356872;
+}
+
+.btn-get-started:active {
+    transform: translateY(-1px);
+}
+
+.btn-get-started::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+.btn-get-started:hover::after {
+    left: 100%;
+}
+
+.btn-get-started i {
+    font-size: 1.1em;
+    transition: transform 0.3s ease;
+}
+
+.btn-get-started:hover i {
+    transform: translateX(5px);
+}
+
+/* Features Section */
+.features {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #407C87;  /* Deep ocean blue */
+    position: relative;
+    display: inline-block;
+}
+
+.features h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: #A5DBDD;  /* Light teal */
+    border-radius: 2px;
+}
+
+.feature-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Cards */
+.card {
+    background: white;
+    border: 1px solid #D3E1E2;  /* Light blue-gray border */
+    border-radius: 20px;
+    padding: 40px 30px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(211, 225, 226, 0.3);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #A5DBDD, #407C87);  /* Teal to deep blue */
+    transition: height 0.3s ease;
+}
+
+.card:hover::before {
+    height: 8px;
+}
+
+.card:hover {
+    border-color: #A5DBDD;
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(165, 219, 221, 0.25);
+}
+
+.card-icon {
+    font-size: 3rem;
+    color: #407C87;  /* Deep ocean blue */
+    margin-bottom: 25px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.card:hover .card-icon {
+    transform: scale(1.1);
+    color: #A5DBDD;  /* Light teal on hover */
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #407C87;  /* Deep ocean blue */
+    transition: color 0.3s ease;
+}
+
+.card:hover h3 {
+    color: #356872;  /* Slightly darker blue */
+}
+
+.card p {
+    color: #5a7a84;  /* Muted teal-gray */
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.card:hover p {
+    color: #6b8a94;  /* Lighter teal-gray */
+}
+
+/* Subtle background pattern for cards */
+.card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: 
+        radial-gradient(circle at 30% 30%, rgba(165, 219, 221, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(64, 124, 135, 0.03) 0%, transparent 50%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid #D3E1E2;
+    color: #5a7a84;
+    font-size: 0.9rem;
+    background: #f8fafb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .btn-get-started {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+    
+    .features h2 {
+        font-size: 2rem;
+    }
+    
+    .feature-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Optional: Add some ocean wave animation in hero */
+@keyframes gentleWave {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.hero {
+    animation: gentleWave 20s ease-in-out infinite;
+    background-size: 200% 200%;
+}
