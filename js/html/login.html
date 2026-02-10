@@ -3,14 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Sign Up — My Coach</title>
-    <link rel="stylesheet" href="css/auth.css" />
+    <title>Login — My Coach</title>
+
+    <!-- link to css -->
+    <link rel="stylesheet" href="../../css/auth.css" />
   </head>
   <body>
     <main>
       <div class="auth-container">
-        <h1>Create Account</h1>
-        <form id="signupForm" novalidate>
+        <h1>Sign in to My Coach</h1>
+        <form id="loginForm">
           <div class="field">
             <label for="email">Email</label>
             <input
@@ -21,31 +23,21 @@
               required
             />
           </div>
+
           <div class="field">
             <label for="password">Password</label>
             <input
               id="password"
               name="password"
               type="password"
-              placeholder="Create a password"
+              placeholder="Your password"
               required
             />
           </div>
-
-          <div class="field">
-            <label for="confirmPassword">Confirm Password</label>
-            <input
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              placeholder="Confirm your password"
-              required
-            />
-          </div>
-          <button type="submit">Sign Up</button>
+          <button type="submit">Sign in</button>
         </form>
         <div class="signup">
-          Already have an account? <a href="login.html">Sign in</a>
+          Don't have an account? <a href="signup.html">Sign up</a>
         </div>
       </div>
     </main>
