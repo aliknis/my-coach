@@ -1,0 +1,301 @@
+/* root variables for colors and transitions*/
+:root {
+    --primary: #407C87;
+    --accent: #A5DBDD;
+    --surface: #EEF1F6;
+    --border: #D3E1E2;
+    --dark: #1a3a3f;
+    --white: #ffffff;
+    --ease: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* to remove browser default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* smooth scrolling when clicking links */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f0f8fb 0%, #eef1f6 100%);
+    color: var(--dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* shared properties for the animated blobs */
+.hero_section::before, 
+.hero_section::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* styling for the first blob at the right */
+.hero_section::before {
+    top: -10%;
+    right: 5%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(165, 219, 221, 0.4), transparent);
+    border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+    animation: blob1 8s ease-in-out infinite;
+}
+
+/* styling for the second blob at left */
+.hero_section::after {
+    bottom: -15%;
+    left: 0%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(64, 124, 135, 0.25), transparent);
+    border-radius: 40% 60% 50% 50% / 50% 50% 40% 60%;
+    animation: blob2 10s ease-in-out infinite;
+}
+
+/* keyframes to make the first blob float */
+@keyframes blob1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+/* keyframes to make the second blob float in a different direction */
+@keyframes blob2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -20px) scale(0.98); }
+}
+
+
+.header {
+    position: sticky;/*to make the header stick to the top*/
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(64, 124, 135, 0.1);
+    padding: 1rem ;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+/*My Coach title style*/
+/*we put a bcz it's a clickable link so the text we get it by a if we put only logo only the box that contains the name we be styled*/
+.logo a {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;/*the space between elements*/
+}
+
+.links a {
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    opacity: 0.85;
+    transition: var(--ease);
+}
+
+.links a:hover {
+    opacity: 1;
+    color: var(--primary);
+}
+/*we use before bcz thzy are like goast elemnts or added elements without adding html or css code*/
+/* creates the animated underline effect  links */
+.links a::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 2px;
+    transition: var(--ease);
+}
+
+/* make the underline on full width on the hover */
+.links a:hover::before {
+    width: 100%;
+}
+
+/* container for the login and signup buttons in the top */
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.signin, .signup {
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: var(--ease);
+}
+
+.signin {
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.signin:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+.signup {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(64, 124, 135, 0.2);
+}
+
+.signup:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(64, 124, 135, 0.3);
+}
+
+.hero_section {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* to control the text alignment and the animation */
+.hero {
+    max-width: 800px;
+    text-align: center;
+    z-index: 10;
+    animation: fadeInUp 1s ease-out;
+}
+.hero h2 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    line-height: 1.1;
+}
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.85;
+}
+
+/*to align the join and learn buttons in the center */
+.hero .buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+}
+.join, .learn {
+    display: inline-block;
+    min-width: 180px;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+    transition: var(--ease);
+}
+.join {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--white);
+    box-shadow: 0 10px 25px rgba(64, 124, 135, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* for white overlay that moves across the button on hover */
+.join::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: var(--ease);
+}
+
+/* to make the overlay moves from the left*/
+.join:hover::before { left: 100%; }
+
+.learn {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+/* to make butons go to the top on hver (4px) */
+.join:hover, .learn:hover {
+    transform: translateY(-4px);
+}
+.learn:hover {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 10px 25px rgba(64, 124, 135, 0.2);
+}
+
+/* the hamburger button for small screens*/
+#menu-toggle, #hamburger-btn {
+    display: none;
+}
+
+/* responsive styles  small screens(tablets) */
+@media (max-width: 768px) {
+    /* shows the hamburger icon on mobile */
+    #hamburger-btn { display: flex; cursor: pointer; color: var(--primary); }
+    
+    /* hides the standard header buttons  */
+    .nav-buttons { display: none; }
+
+    /* transforms the nav links into a vertical menu */
+    .links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; width: 100%;
+        background: var(--white);
+        padding: 2rem;
+        border-top: 1px solid var(--border);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    /* to show the vertical menu on menu check*/
+    #menu-toggle:checked ~ .links { display: flex ;align-items: center; }
+
+    /* shrinks the hero text and blobs for smaller screen sizes */
+    .hero h2 { font-size: 2.8rem; }
+    .hero_section::before, .hero_section::after { width: 300px; height: 300px; }/*we use before and after bcz we need 2 childs*/
+}
+
+/* responsive styles for small screens(mobiles) */
+@media (max-width: 480px) {
+    .navbar { padding: 0 1rem; }
+    .hero h2 { font-size: 2.2rem; }
+    
+    /* put the buttons vertically  */
+    .hero .buttons { flex-direction: column; width: 100%; }
+    .join, .learn { width: 100%; min-width: 0; }
+}

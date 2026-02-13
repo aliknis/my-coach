@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iron Coding — Auth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/auth.css">
+  <script src="../js/auth.js" defer></script>
+</head>
+<body>
+
+<div class="card" id="card">
+  <div class="teal-panel" id="tealPanel"></div>
+  <div class="brand" id="brand">My Coach</div>
+
+  <div class="forms">
+    <div class="form signup-form active" id="signupForm">
+      <div class="form-inner">
+        <h2>Register</h2>
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button type="button">SIGN UP</button>
+        <p class="hint">Already have an account? <em class="toggle-link">Sign in</em></p>
+      </div>
+    </div>
+
+    <div class="form signin-form" id="signinForm">
+      <div class="form-inner">
+        <h2>Login</h2>
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <p class="forgot">Forgot password?</p>
+        <button type="button">SIGN IN</button>
+        <p class="hint">Don't have an account? <em class="toggle-link">Sign up</em></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="auth.js" defer></script>
+</body>
+</html>
