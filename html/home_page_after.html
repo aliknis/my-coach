@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>My Coach - Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='../css/home_page.css'>
+    <link rel='stylesheet' href='../css/home_page_after.css'>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <h2 class="logo"><a href="#">My Coach</a></h2>
+            <input type="checkbox" id="menu-toggle"/>
+            <label for="menu-toggle" id="hamburger-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                    <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </label>
+
+            <ul class="links">
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#nutrition">Nutrition</a></li>
+                <li><a href="#progress">Progress</a></li>
+            </ul>
+            <div class="buttons user-menu">
+                <div class="user-avatar" title="User Profile">
+                    <span id="userInitials">U</span>
+                </div>
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero_section">
+        <div class="hero">
+            <h2>Ready to crush your goals?</h2>
+            <p>
+                Track your progress, access personalized programs, and stay on top of your fitness journey.
+                Your consistency is your superpower, let's make today count!
+            </p>
+        </div>
+    </section>
+
+    <section id="dashboard" class="dashboard-section">
+        <h2 class="dashboard-title">Your Dashboard</h2>
+        
+        <div class="stats-section">
+            <h3 class="stats-title">Your Stats</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Workouts Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Active Programs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">8.5</div>
+                    <div class="stat-label">Kg Lost</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">45</div>
+                    <div class="stat-label">Days Streak</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">🏋️</div>
+                <h3>My Programs</h3>
+                <p>Access your personalized workout programs and track your training progress.</p>
+                <a href="#programs" class="card-action">View Programs →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">🥗</div>
+                <h3>Nutrition Plan</h3>
+                <p>Follow your customized meal plans and nutritional guidance for optimal results.</p>
+                <a href="#nutrition" class="card-action">View Nutrition →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">📊</div>
+                <h3>Progress Tracking</h3>
+                <p>Monitor your improvements with detailed analytics and milestone celebrations.</p>
+                <a href="#progress" class="card-action">View Progress →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">📅</div>
+                <h3>Schedule</h3>
+                <p>Plan your workouts and stay organized with your personalized training calendar.</p>
+                <a href="#schedule" class="card-action">View Schedule →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">👨‍🏫</div>
+                <h3>My Coach</h3>
+                <p>Connect with your coach for guidance, feedback, and personalized support.</p>
+                <a href="#coach" class="card-action">Message Coach →</a>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dashboard-card-icon">⚙️</div>
+                <h3>Settings</h3>
+                <p>Manage your profile, preferences, and notification settings.</p>
+                <a href="#settings" class="card-action">Go to Settings →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features_section">
+        <h2>Keep Growing</h2>
+        <p class="section-subtitle">Continue your journey with our comprehensive features</p>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon">💪</div>
+                <h3>Video Tutorials</h3>
+                <p>Access a library of professional workout videos with proper form demonstrations.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3>Goal Setting</h3>
+                <p>Set, track, and achieve your fitness milestones with smart goal management.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h3>Community</h3>
+                <p>Join challenges, share achievements, and stay motivated with fellow members.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
