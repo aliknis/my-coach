@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iron Coding — Sign Up</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/auth.css" />
+  </head>
+  <body>
+    <div class="card" id="card">
+      <a class="back-link" href="../" aria-label="Go back to home">
+        <span aria-hidden="true">←</span>
+      </a>
+
+      <!-- Teal panel on the RIGHT for signup (form is on the left) -->
+      <div class="teal-panel signup-side" id="tealPanel"></div>
+      <div class="brand signup-side" id="brand">My Coach</div>
+
+      <div class="forms">
+        <div class="form signup-form active" id="signupForm">
+          <div class="form-inner">
+            <h2>Register</h2>
+            <p id="signupMsgBox"></p>
+            <!-- autocomplete="name" helps the browser autofill correctly -->
+            <input
+              type="text"
+              placeholder="Name"
+              id="signupName"
+              autocomplete="name"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              id="signupEmail"
+              autocomplete="email"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              id="signupPassword"
+              autocomplete="new-password"
+            />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              id="confirmSignupPassword"
+              autocomplete="new-password"
+            />
+            <button type="button" id="signupBtn">SIGN UP</button>
+            <p class="hint">
+              Already have an account?
+              <em><a class="toggle-link" href="../signin">Sign in</a></em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="../assets/js/auth.js"></script>
+  </body>
+</html>
