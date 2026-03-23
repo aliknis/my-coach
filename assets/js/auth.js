@@ -42,7 +42,7 @@ async function signin() {
     console.log(":) signin successfull", data);
     msgBox.textContent = ":) signin successful" + data;
 
-    window.location.replace("../../home");
+    window.location.replace("../home");
   }
 }
 
@@ -53,7 +53,7 @@ async function signout() {
     console.log(":( signout error", error.message);
   } else {
     console.log(":) signout successfull");
-    window.location.replace("../../");
+    window.location.replace("../");
   }
 }
 
