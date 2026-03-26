@@ -33,13 +33,17 @@
           <li><a href="#dashboard">Dashboard</a></li>
           <li><a href="#programs">Programs</a></li>
           <li><a href="#nutrition">Nutrition</a></li>
-          <li><a href="#progress">Progress</a></li>
+          <li><a href="../../progress_tracking/progress_tracking.html">Progress</a></li>
+          <li><a href="#community">Community</a></li>
         </ul>
         <div class="buttons user-menu">
-          <div class="user-avatar" title="User Profile">
+          <div class="user-avatar" id="userProfileBtn" title="User Profile" style="cursor: pointer;">
             <span id="userInitials">U</span>
           </div>
-          <button class="logout-btn" id="signoutBtn">Logout</button>
+          <div class="user-profile-menu" id="userProfileMenu">
+            <a href="#settings" class="profile-menu-item">⚙️ Settings</a>
+            <button class="profile-menu-item logout-item" id="signoutBtn">🚪 Logout</button>
+          </div>
         </div>
       </nav>
     </header>
@@ -101,77 +105,80 @@
           <a href="#nutrition" class="card-action">View Nutrition →</a>
         </div>
 
-        <div class="dashboard-card">
+        <a
+          class="dashboard-card dashboard-card-link"
+          id="progressTrackingCard"
+          href="../progress_tracking/progress_tracking.html"
+        >
           <div class="dashboard-card-icon">📊</div>
           <h3>Progress Tracking</h3>
           <p>
             Monitor your improvements with detailed analytics and milestone
             celebrations.
           </p>
-          <a href="#progress" class="card-action">View Progress →</a>
-        </div>
+          <span class="card-action">View Progress →</span>
+        </a>
 
         <div class="dashboard-card">
-          <div class="dashboard-card-icon">📅</div>
-          <h3>Schedule</h3>
-          <p>
-            Plan your workouts and stay organized with your personalized
-            training calendar.
-          </p>
-          <a href="#schedule" class="card-action">View Schedule →</a>
-        </div>
-
-        <div class="dashboard-card">
-          <div class="dashboard-card-icon">👨‍🏫</div>
-          <h3>My Coach</h3>
-          <p>
-            Connect with your coach for guidance, feedback, and personalized
-            support.
-          </p>
-          <a href="#coach" class="card-action">Message Coach →</a>
-        </div>
-
-        <div class="dashboard-card">
-          <div class="dashboard-card-icon">⚙️</div>
-          <h3>Settings</h3>
-          <p>Manage your profile, preferences, and notification settings.</p>
-          <a href="#settings" class="card-action">Go to Settings →</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="features" class="features_section">
-      <h2>Keep Growing</h2>
-      <p class="section-subtitle">
-        Continue your journey with our comprehensive features
-      </p>
-      <div class="cards-container">
-        <div class="card">
-          <div class="card-icon">💪</div>
-          <h3>Video Tutorials</h3>
-          <p>
-            Access a library of professional workout videos with proper form
-            demonstrations.
-          </p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🎯</div>
-          <h3>Goal Setting</h3>
-          <p>
-            Set, track, and achieve your fitness milestones with smart goal
-            management.
-          </p>
-        </div>
-        <div class="card">
-          <div class="card-icon">👥</div>
+          <div class="dashboard-card-icon">👥</div>
           <h3>Community</h3>
           <p>
-            Join challenges, share achievements, and stay motivated with fellow
-            members.
+            Connect with like-minded individuals, share achievements, and stay
+            motivated together.
           </p>
+          <a href="../community_feed/community_feed.html" class="card-action">Join Community →</a>
+        </div>
+
+        <div class="dashboard-card">
+          <div class="dashboard-card-icon">🛍️</div>
+          <h3>Products</h3>
+          <p>
+            Browse and purchase fitness gear, supplements, and equipment
+            recommended by your coach.
+          </p>
+          <a href="#products" class="card-action">Shop Products →</a>
         </div>
       </div>
     </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>My Coach</h3>
+          <p>Your personal fitness journey starts here. Stay consistent, stay motivated.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#" class="footer-link" data-page="programs">Programs</a></li>
+            <li><a href="#" class="footer-link" data-page="nutrition">Nutrition</a></li>
+            <li><a href="#" class="footer-link" data-page="products">Products</a></li>
+            <li><a href="#" class="footer-link" data-page="progress">Progress</a></li>
+            <li><a href="#" class="footer-link" data-page="community">Community</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 My Coach. All rights reserved.</p>
+      </div>
+    </footer>
   </body>
   <script type="module" src="home.js"></script>
   <script type="module" src="../assets/js/auth.js"></script>

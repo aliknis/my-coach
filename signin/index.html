@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iron Coding — Sign In</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../assets/css/auth.css" />
@@ -15,33 +14,29 @@
       <a class="back-link" href="../" aria-label="Go back to home">
         <span aria-hidden="true">←</span>
       </a>
-
-      <!-- Teal panel on the LEFT for signin (form is on the right) -->
       <div class="teal-panel signin-side" id="tealPanel"></div>
       <div class="brand signin-side" id="brand">My Coach</div>
 
       <div class="forms">
-        <div class="form signin-form active" id="signinForm">
+        <div class="form signup-form active" id="signupForm">
           <div class="form-inner">
-            <h2>Login</h2>
-            <p id="signinMsgBox"></p>
+            <p id="signupMsgBox"></p>
             <input
               type="email"
-              placeholder="Email"
+              placeholder="📧 Email"
               id="signinEmail"
               autocomplete="email"
             />
             <input
               type="password"
-              placeholder="Password"
+              placeholder="🔐 Password"
               id="signinPassword"
               autocomplete="current-password"
             />
-            <p class="forgot">Forgot password?</p>
-            <button type="button" id="signinBtn">SIGN IN</button>
+            <button type="button" id="signinBtn">Sign In</button>
+            <button type="button" id="testHomeBtn">Test: Go to Home</button>
             <p class="hint">
-              Don't have an account?
-              <em><a class="toggle-link" href="../signup">Sign up</a></em>
+              New here? <em><a class="toggle-link" href="../signup">Create an account</a></em>
             </p>
           </div>
         </div>

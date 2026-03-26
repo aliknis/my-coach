@@ -24,6 +24,45 @@
   box-shadow: 0 4px 15px rgba(64, 124, 135, 0.3);
 }
 
+.user-profile-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(64, 124, 135, 0.15);
+  min-width: 180px;
+  margin-top: 0.5rem;
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.user-profile-menu.active {
+  display: flex;
+}
+
+.profile-menu-item {
+  padding: 0.8rem 1.2rem;
+  text-decoration: none;
+  color: var(--dark);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: var(--ease);
+  font-size: 0.95rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-menu-item:hover {
+  background: linear-gradient(135deg, rgba(64, 124, 135, 0.1), rgba(165, 219, 221, 0.1));
+  color: var(--primary);
+}
+
 .logout-btn {
   padding: 0.6rem 1.5rem;
   border-radius: 50px;
@@ -71,6 +110,8 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashboard-card::before {
@@ -106,11 +147,23 @@
   font-weight: 800;
 }
 
+.dashboard-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.dashboard-card-link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .dashboard-card p {
   color: var(--dark);
   opacity: 0.8;
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  flex: 1;
 }
 
 .card-action {
@@ -123,6 +176,8 @@
   font-weight: 600;
   font-size: 0.9rem;
   transition: var(--ease);
+  align-self: flex-start;
+  margin-top: auto;
 }
 
 .card-action:hover {
@@ -204,4 +259,121 @@
 
 body {
   background-color: black;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Footer Styles */
+.footer {
+  background: linear-gradient(135deg, rgba(64, 124, 135, 0.1), rgba(165, 219, 221, 0.1));
+  border-top: 1px solid rgba(64, 124, 135, 0.2);
+  padding: 3rem 2rem 2rem;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  color: var(--primary);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.footer-section h3 {
+  font-size: 1.3rem;
+}
+
+.footer-section h4 {
+  font-size: 1rem;
+}
+
+.footer-section p {
+  color: var(--dark);
+  opacity: 0.8;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-section a {
+  color: var(--dark);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: var(--ease);
+  font-size: 0.95rem;
+}
+
+.footer-section a:hover {
+  color: var(--primary);
+  opacity: 1;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(64, 124, 135, 0.2);
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.footer-bottom p {
+  color: var(--dark);
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-section ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
