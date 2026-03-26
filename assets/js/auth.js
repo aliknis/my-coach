@@ -89,3 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("testHomeBtn");
+
+  if (button) {
+    button.addEventListener("click", () => {
+      console.log("test home clicked!");
+      window.location.replace("../home");
+    });
+  }
+});
