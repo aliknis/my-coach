@@ -3,9 +3,9 @@ import { supabase } from "./assets/js/supabase_client.js";
 const { data, error } = await supabase.auth.getUser();
 
 if (error) {
-  console.log(":( No signin:", error.message);
+  console.log("Not Logged In:", error.message);
 } else {
-  console.log(":) signin successful:", data);
+  console.log("Sign in Successful:", data);
   window.location.replace("home");
 }
 

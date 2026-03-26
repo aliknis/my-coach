@@ -1,4 +1,13 @@
 import { supabase } from "../assets/js/supabase_client.js";
+// Simple connection test
+const { data, error } = await supabase.auth.getUser();
+
+if (error) {
+  console.log("Not Logged In:", error.message);
+  window.location.replace("../signin");
+} else {
+  console.log("Sign in Successful:", data);
+}
 
 // Profile menu toggle
 const userProfileBtn = document.getElementById("userProfileBtn");
