@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - My Coach</title>
+    <link rel="stylesheet" href="products-styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>My Coach</h1>
+                <nav>
+                    <a href="products.html" class="nav-link active">Products</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-icon">🛒</div>
+                    <h2>Shop Our Products</h2>
+                    <p>Premium equipment and supplements for your fitness journey.</p>
+                </div>
+            </section>
+
+            <div class="content-wrapper">
+                <!-- Category Tabs -->
+                <div class="category-tabs">
+                    <button class="tab-button active" onclick="switchTab('sports')">
+                        <span class="tab-icon">🏋️</span>
+                        Sports Equipment
+                    </button>
+                    <button class="tab-button" onclick="switchTab('nutrition')">
+                        <span class="tab-icon">💊</span>
+                        Supplements
+                    </button>
+                </div>
+
+                <!-- Sports Equipment Section -->
+                <section id="sports" class="tab-content active">
+                    <h3>Sports Equipment</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1703668984128-b506579acdd2?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Adjustable Dumbbells Set">
+                            </div>
+                            <h4>Adjustable Dumbbells Set</h4>
+                            <p class="product-description">5-50 lbs adjustable dumbbells with comfortable grip handles. Perfect for home and gym training.</p>
+                            <div class="product-specs">
+                                <span class="spec">Weight Range: 5-50 lbs</span>
+                                <span class="spec">Material: Cast Iron</span>
+                                <span class="spec">Grip: Non-slip</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$149.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1634788700761-b7272cd770e8?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Resistance Band Set">
+                            </div>
+                            <h4>Resistance Band Set</h4>
+                            <p class="product-description">5-piece resistance band set with varying resistance levels. Lightweight and portable for anywhere training.</p>
+                            <div class="product-specs">
+                                <span class="spec">Resistance Levels: 5</span>
+                                <span class="spec">Material: Natural Latex</span>
+                                <span class="spec">Portable: Yes</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$29.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1620188526357-ff08e03da266?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Barbell Olympic Set">
+                            </div>
+                            <h4>Barbell Olympic Set</h4>
+                            <p class="product-description">Olympic barbell with 100 lbs of weight plates. Professional grade for serious strength training.</p>
+                            <div class="product-specs">
+                                <span class="spec">Total Weight: 100 lbs</span>
+                                <span class="spec">Barbell Length: 7ft</span>
+                                <span class="spec">Grip: Knurled</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$299.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1735647134600-fd2b75fba36d?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Adjustable Weight Bench">
+                            </div>
+                            <h4>Adjustable Weight Bench</h4>
+                            <p class="product-description">Multi-position weight bench with backrest adjustment. Ideal for dumbbell exercises and core work.</p>
+                            <div class="product-specs">
+                                <span class="spec">Max Weight: 300 lbs</span>
+                                <span class="spec">Positions: 6</span>
+                                <span class="spec">Material: Steel Frame</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$89.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://plus.unsplash.com/premium_photo-1661582720243-eca670294659?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pull-up Bar Doorway Mount">
+                            </div>
+                            <h4>Pull-up Bar</h4>
+                            <p class="product-description">Stable doorway pull-up bar with non-slip handles. No installation required, fits most doorframes.</p>
+                            <div class="product-specs">
+                                <span class="spec">Max Weight: 250 lbs</span>
+                                <span class="spec">Installation: Easy</span>
+                                <span class="spec">Material: Steel</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$39.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1520334298038-4182dac472e8?q=80&w=766&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Jump Rope Professional">
+                            </div>
+                            <h4>Jump Rope</h4>
+                            <p class="product-description">Speed jump rope with adjustable length and bearing handles. Perfect for HIIT and cardio training.</p>
+                            <div class="product-specs">
+                                <span class="spec">Length: Adjustable</span>
+                                <span class="spec">Handle: Aluminium</span>
+                                <span class="spec">Rope: Steel Wire</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$24.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1587380571575-9aee5173ad8f?q=80&w=1167&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kettlebell Set">
+                            </div>
+                            <h4>Kettlebell Set</h4>
+                            <p class="product-description">3-piece kettlebell set (15, 25, 35 lbs). Cast iron construction for durability and strength training.</p>
+                            <div class="product-specs">
+                                <span class="spec">Weights: 15, 25, 35 lbs</span>
+                                <span class="spec">Material: Cast Iron</span>
+                                <span class="spec">Handle: Reinforced</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$99.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://plus.unsplash.com/premium_photo-1661963553074-243e05f053ca?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foam Roller">
+                            </div>
+                            <h4>Foam Roller</h4>
+                            <p class="product-description">High-density foam roller for muscle recovery and flexibility. Use before and after workouts.</p>
+                            <div class="product-specs">
+                                <span class="spec">Length: 36 inches</span>
+                                <span class="spec">Density: High</span>
+                                <span class="spec">Material: EVA Foam</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$34.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://plus.unsplash.com/premium_photo-1661900564310-3ab1b0d66853?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Resistance Cable Machine">
+                            </div>
+                            <h4>Resistance Cable Machine</h4>
+                            <p class="product-description">Home cable machine with adjustable pulleys. Versatile for full body workouts with multiple exercise options.</p>
+                            <div class="product-specs">
+                                <span class="spec">Max Weight: 200 lbs</span>
+                                <span class="spec">Pulleys: Dual</span>
+                                <span class="spec">Space: Compact</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$199.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://plus.unsplash.com/premium_photo-1723759271930-3514bb76abb4?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gym Mat">
+                            </div>
+                            <h4>Gym Mat (6mm)</h4>
+                            <p class="product-description">6mm thick non-slip gym mat. Protects floors and provides cushioning for floor exercises.</p>
+                            <div class="product-specs">
+                                <span class="spec">Thickness: 6mm</span>
+                                <span class="spec">Size: 72"x 48"</span>
+                                <span class="spec">Material: NBR Foam</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$44.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1582852567809-a25c21a13ee6?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Wrist & Ankle Weights">
+                            </div>
+                            <h4>Wrist & Ankle Weights</h4>
+                            <p class="product-description">Adjustable wrist and ankle weights (1-5 lbs each). Add resistance to cardio and bodyweight exercises.</p>
+                            <div class="product-specs">
+                                <span class="spec">Weight Range: 1-5 lbs</span>
+                                <span class="spec">Adjustable: Yes</span>
+                                <span class="spec">Set: 2 pairs</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$49.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1585076795423-6f81d61dfc6e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ab Roller Wheel">
+                            </div>
+                            <h4>Ab Roller Wheel</h4>
+                            <p class="product-description">Dual wheel ab roller for effective core training. Smooth rolling mechanism with comfort handles.</p>
+                            <div class="product-specs">
+                                <span class="spec">Wheels: Dual</span>
+                                <span class="spec">Handle: Foam Grip</span>
+                                <span class="spec">Max Weight: 300 lbs</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$19.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Supplements Section -->
+                <section id="nutrition" class="tab-content">
+                    <h3>Supplements</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.optigura.fr/img/prods/1153/main-w500h500@2x.08209.webp" alt="Whey Protein Powder">
+                            </div>
+                            <h4>Whey Protein Powder</h4>
+                            <p class="product-description">100% Pure Whey Protein Isolate. 25g protein per serving with fast absorption for muscle recovery.</p>
+                            <div class="product-specs">
+                                <span class="spec">Protein: 25g per serving</span>
+                                <span class="spec">Servings: 30</span>
+                                <span class="spec">Flavors: Multiple</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$39.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://i5.walmartimages.com/seo/Dymatize-Super-Mass-Gainer-Rich-Chocolate-6-lbs_58dd449b-c4b9-4bee-aefe-9c7c54e8c1ee.446422cd08c6f7dfb6c8d385d68de89b.jpeg" alt="Mass Gainer Powder">
+                            </div>
+                            <h4>Mass Gainer Powder</h4>
+                            <p class="product-description">High-calorie mass gainer with 50g protein and 250g carbs. Perfect for bulking and weight gain.</p>
+                            <div class="product-specs">
+                                <span class="spec">Calories: 1250 per serving</span>
+                                <span class="spec">Protein: 50g</span>
+                                <span class="spec">Carbs: 250g</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$49.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/nrx/nrx02992/y/8.jpg" alt="Creatine Monohydrate">
+                            </div>
+                            <h4>Creatine Monohydrate</h4>
+                            <p class="product-description">Pure Creatine Monohydrate powder. Enhances strength, power, and muscle mass. 5g servings.</p>
+                            <div class="product-specs">
+                                <span class="spec">Purity: 99.9%</span>
+                                <span class="spec">Servings: 200</span>
+                                <span class="spec">Per Serving: 5g</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$24.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/opn/opn05269/y/37.jpg" alt="Pre-Workout Supplement">
+                            </div>
+                            <h4>Pre-Workout Supplement</h4>
+                            <p class="product-description">Advanced pre-workout formula with caffeine and beta-alanine. Boost energy and endurance for intense workouts.</p>
+                            <div class="product-specs">
+                                <span class="spec">Caffeine: 200mg</span>
+                                <span class="spec">Servings: 30</span>
+                                <span class="spec">Flavors: 4 options</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$34.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://m.media-amazon.com/images/I/71+R-I6pUjL._AC_UF894,1000_QL80_.jpg" alt="BCAA Amino Acids">
+                            </div>
+                            <h4>BCAA Amino Acids</h4>
+                            <p class="product-description">Branched Chain Amino Acids for recovery and muscle preservation. 2:1:1 ratio formula.</p>
+                            <div class="product-specs">
+                                <span class="spec">Ratio: 2:1:1</span>
+                                <span class="spec">Servings: 60</span>
+                                <span class="spec">Per Serving: 5g</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$29.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.nutrisport-performances.com/16316-large_default/multi-vitamin-complex-applied-nutrition.jpg" alt="Multivitamin Complex">
+                            </div>
+                            <h4>Multivitamin Complex</h4>
+                            <p class="product-description">Complete multivitamin with 25+ essential vitamins and minerals. Supports overall health and immunity.</p>
+                            <div class="product-specs">
+                                <span class="spec">Vitamins: 25+</span>
+                                <span class="spec">Tablets: 90</span>
+                                <span class="spec">Form: Capsule</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$19.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://proteinpackage.co.uk/cdn/shop/products/Optimum-Nutrition-Chocolate-100_-Casein-Gold-Standard-Powder-28-Servings-Protein-Package_1200x.png?v=1646132501" alt="Casein Protein Powder">
+                            </div>
+                            <h4>Casein Protein Powder</h4>
+                            <p class="product-description">Slow-release casein protein. Perfect before bed for overnight muscle recovery. 24g protein per serving.</p>
+                            <div class="product-specs">
+                                <span class="spec">Protein: 24g per serving</span>
+                                <span class="spec">Release: Slow (8+ hours)</span>
+                                <span class="spec">Servings: 25</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$44.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.xtr.gr/images/detailed/857/01-136-107_Fat_Burner_60_caps_NW_31g_-web_i94n-li.jpg" alt="Fat Burner Supplement">
+                            </div>
+                            <h4>Fat Burner Supplement</h4>
+                            <p class="product-description">Thermogenic fat burner with natural ingredients. Boost metabolism and energy for weight loss.</p>
+                            <div class="product-specs">
+                                <span class="spec">Ingredients: Natural</span>
+                                <span class="spec">Capsules: 60</span>
+                                <span class="spec">Servings: 30</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$39.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://naturesbounty.com/cdn/shop/files/2c94e3db-4aac-495f-b46f-02d73014199a_grande.jpg?v=1746492342" alt="Omega-3 Fish Oil">
+                            </div>
+                            <h4>Omega-3</h4>
+                            <p class="product-description">Premium fish oil with EPA and DHA. Supports joint health, heart health, and recovery.</p>
+                            <div class="product-specs">
+                                <span class="spec">EPA & DHA: 1000mg</span>
+                                <span class="spec">Soft Gels: 90</span>
+                                <span class="spec">Source: Wild Caught</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$24.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://protein-shop-tunisia.tn/wp-content/uploads/2025/04/Glutamine-Powder-optimum-nutrition-tunisie.webp" alt="Glutamine Powder">
+                            </div>
+                            <h4>Glutamine Powder</h4>
+                            <p class="product-description">Pure L-Glutamine for muscle recovery and gut health. Supports protein synthesis and immune function.</p>
+                            <div class="product-specs">
+                                <span class="spec">Pure L-Glutamine: 5g</span>
+                                <span class="spec">Servings: 60</span>
+                                <span class="spec">Form: Powder</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$29.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images-na.ssl-images-amazon.com/images/I/61SyOubDUrL._SS400_.jpg" alt="Joint Support Complex">
+                            </div>
+                            <h4>Joint Support Complex</h4>
+                            <p class="product-description">Glucosamine & chondroitin blend for joint health. Supports flexibility and reduces joint stress.</p>
+                            <div class="product-specs">
+                                <span class="spec">Glucosamine: 1500mg</span>
+                                <span class="spec">Chondroitin: 1200mg</span>
+                                <span class="spec">Tablets: 90</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$34.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/gll/gll00033/y/8.jpg" alt="Sleep & Recovery Formula">
+                            </div>
+                            <h4>Sleep & Recovery Formula</h4>
+                            <p class="product-description">Natural sleep aid with melatonin and magnesium. Promotes deep sleep for better recovery.</p>
+                            <div class="product-specs">
+                                <span class="spec">Melatonin: 5mg</span>
+                                <span class="spec">Magnesium: 200mg</span>
+                                <span class="spec">Tablets: 60</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$22.99</span>
+                                <button class="btn-add-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 My Coach. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            document.getElementById(tabName).classList.add('active');
+            event.target.closest('.tab-button').classList.add('active');
+        }
+    </script>
+</body>
+</html>
