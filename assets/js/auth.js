@@ -45,10 +45,6 @@ async function signup(name, email, password) {
   email ??= document.getElementById("signupEmail").value;
   password ??= document.getElementById("signupPassword").value;
 
-  console.log("name: ", name);
-  console.log("email: ", email);
-  console.log("password: ", password);
-
   const { data, error } = await supabase.auth.signUp({
     email: email,
     password: password,
@@ -58,10 +54,10 @@ async function signup(name, email, password) {
   });
 
   if (error) {
-    console.log(":( signup error", error.message);
-    showToast(`:( Sign up error: ${error.message}`, "error");
+    console.log("Sign up error", error.message);
+    showToast(`Sign up error: ${error.message}`, "error");
   } else {
-    console.log(":) signUp sucessfull", data);
+    console.log("Sign up sucessfull", data);
     signin(email, password);
   }
 }
@@ -70,19 +66,16 @@ async function signin(email, password) {
   email ??= document.getElementById("signinEmail").value;
   password ??= document.getElementById("signinPassword").value;
 
-  console.log("email: ", email);
-  console.log("password: ", password);
-
   const { data, error } = await supabase.auth.signInWithPassword({
     email: email,
     password: password,
   });
 
   if (error) {
-    console.log(":( signin error", error.message);
-    showToast(`:( Sign in error: ${error.message}`, "error");
+    console.log("Sign in error", error.message);
+    showToast(`Sign in error: ${error.message}`, "error");
   } else {
-    console.log(":) signin successfull", data);
+    console.log("Sign in successfull", data);
     window.location.replace("../home");
   }
 }
@@ -91,31 +84,46 @@ async function signout() {
   const { error } = await supabase.auth.signOut();
 
   if (error) {
-    console.log(":( signout error", error.message);
-    showToast(":( signout error" + error.message, "error");
+    console.log("Sign out error", error.message);
+    showToast("Sign out error" + error.message, "error");
   } else {
-    console.log(":) signout successfull");
+    console.log("Sign out Successfull");
     window.location.replace("../");
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("signupBtn");
+  const password = document.getElementById("signupPassword");
+  const confirm = document.getElementById("confirmSignupPassword");
 
-  if (button) {
-    button.addEventListener("click", () => {
-      console.log("Sign up clicked!");
+  if (confirm && password) {
+    confirm.addEventListener("input", () => {
+      if (confirm.value !== password.value) {
+        confirm.setCustomValidity("Passwords do not match");
+      } else {
+        confirm.setCustomValidity(""); // clears the error
+      }
+    });
+  }
+
+  const form = document.getElementById("signupForm");
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      console.log("Sign up form submitted!");
       signup();
     });
   }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("signinBtn");
+  const form = document.getElementById("signinForm");
 
-  if (button) {
-    button.addEventListener("click", () => {
-      console.log("signin clicked!");
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      console.log("Sign in form submitted!");
       signin();
     });
   }
@@ -126,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (button) {
     button.addEventListener("click", () => {
-      console.log("signout clicked!");
+      console.log("Sign out clicked!");
       signout();
     });
   }
