@@ -1,4 +1,4 @@
-import { supabase } from "./assets/js/supabase_client.js";
+import { supabase } from "./supabase_client.js";
 // Simple connection test
 const { data, error } = await supabase.auth.getUser();
 
@@ -6,17 +6,17 @@ if (error) {
   console.log(":( No signin:", error.message);
 } else {
   console.log(":) signin successful:", data);
-  window.location.replace("home");
+  window.location.replace("../home/main_page.html");
 }
 
 // Footer links navigation
 const footerLinks = document.querySelectorAll(".footer-link");
 const pageMap = {
-  programs: "home#programs",
-  nutrition: "home#nutrition",
-  products: "home#products",
-  progress: "home/progress_tracking/progress_tracking.html",
-  community: "home/community_feed/community_feed.html",
+  programs: "../p_p/personalized-programs.html",
+  nutrition: "../nutrition/nutrition-guidance.html",
+  products: "../products/products.html",
+  progress: "../progress_tracking/progress_tracking.html",
+  community: "../community_feed/community_feed.html",
 };
 
 footerLinks.forEach((link) => {
@@ -33,7 +33,7 @@ footerLinks.forEach((link) => {
       window.location.href = destination;
     } else {
       // User is not logged in, redirect to login
-      window.location.href = "signin";
+      window.location.href = "../signin/index.html";
     }
   });
 });

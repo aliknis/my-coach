@@ -1,4 +1,4 @@
-import { supabase } from "../assets/js/supabase_client.js";
+import { supabase } from "./supabase_client.js";
 
 // Profile menu toggle
 const userProfileBtn = document.getElementById("userProfileBtn");
