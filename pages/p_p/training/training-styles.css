@@ -391,3 +391,41 @@ footer {
         font-size: 12px;
     }
 }
+
+.program-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.program-actions .btn-learn-more,
+.btn-select-program {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+}
+
+.btn-select-program {
+    padding: 12px;
+    background-color: var(--white);
+    color: var(--primary-dark);
+    border: 2px solid var(--primary-dark);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-select-program:hover {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(64, 124, 135, 0.25);
+}
+
+@media (max-width: 480px) {
+    .program-actions {
+        flex-direction: column;
+    }
+}
