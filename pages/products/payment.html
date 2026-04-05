@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - My Coach</title>
+    <link rel="stylesheet" href="products-styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>My Coach</h1>
+                    <nav>
+                        <a href="products.html" class="nav-link">Products</a>
+                        <a href="cart.html" class="nav-link">Cart</a>
+                        <a href="payment.html" class="nav-link active">Payment</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-icon">💳</div>
+                    <h2>Payment</h2>
+                    <p>Select your payment method and complete your order.</p>
+                </div>
+            </section>
+
+            <section class="tab-content active">
+                <h3>Choose Payment Method</h3>
+                <div class="product-card" style="padding:20px;">
+                    <form id="paymentForm">
+                        <div class="product-specs" style="margin-bottom: 20px;">
+                            <label class="spec"><input type="radio" name="paymentMethod" value="card" checked> Credit / Debit Card</label>
+                            <label class="spec"><input type="radio" name="paymentMethod" value="paypal"> PayPal</label>
+                            <label class="spec"><input type="radio" name="paymentMethod" value="cash"> Cash on Delivery</label>
+                        </div>
+
+                        <div class="product-specs">
+                            <label class="spec">Cardholder Name<br><input type="text" id="cardName" required style="width:100%; margin-top:8px; padding:10px;"></label>
+                            <label class="spec">Card Number<br><input type="tel" id="cardNumber" inputmode="numeric" maxlength="19" required style="width:100%; margin-top:8px; padding:10px;"></label>
+                            <label class="spec">Expiry Date<br><input type="month" id="expiryDate" min="" required style="width:100%; margin-top:8px; padding:10px;"></label>
+                            <label class="spec">CVV<br><input type="password" id="cvv" inputmode="numeric" maxlength="4" required style="width:100%; margin-top:8px; padding:10px;"></label>
+                        </div>
+
+                        <div class="price-section" style="padding: 20px 0 0 0;">
+                            <a class="btn-add-cart" href="cart.html" style="text-align:center; text-decoration:none;">Back to Cart</a>
+                            <button class="btn-add-cart" type="submit">Pay Now</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 My Coach. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const CART_STORAGE_KEY = 'myCoachCart';
+
+        function toggleCardFields() {
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
+            const cardInputs = ['cardName', 'cardNumber', 'expiryDate', 'cvv']
+                .map(id => document.getElementById(id))
+                .filter(Boolean);
+            const isCardMethod = selectedMethod === 'card';
+
+            cardInputs.forEach(input => {
+                input.required = isCardMethod;
+                input.disabled = !isCardMethod;
+                input.closest('label').style.opacity = isCardMethod ? '1' : '0.6';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const expiryDateInput = document.getElementById('expiryDate');
+            if (expiryDateInput) {
+                const now = new Date();
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                expiryDateInput.min = `${now.getFullYear()}-${month}`;
+            }
+
+            document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+                radio.addEventListener('change', toggleCardFields);
+            });
+            toggleCardFields();
+
+            const paymentForm = document.getElementById('paymentForm');
+            if (!paymentForm) {
+                console.warn('Payment form not found.');
+                return;
+            }
+
+            paymentForm.addEventListener('submit', event => {
+                event.preventDefault();
+                alert('Payment submitted successfully!');
+                localStorage.removeItem(CART_STORAGE_KEY);
+                window.location.href = 'products.html';
+            });
+        });
+    </script>
+</body>
+</html>
