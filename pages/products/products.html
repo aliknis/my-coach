@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - My Coach</title>
+    <link rel="icon" type="image/png" href="../../favicon.png">
     <link rel="stylesheet" href="../../assets/css/products-styles.css">
 </head>
 <body>
     <div class="container">
         <header>
             <div class="header-content">
-                <h1>My Coach</h1>
-                <nav>
-                    <a href="products.html" class="nav-link active">Products</a>
-                </nav>
+                <div class="header-left">
+                    <h1>My Coach</h1>
+                    <nav>
+                        <a href="products.html" class="nav-link active">Products</a>
+                    </nav>
+                </div>
+                <button class="cart-button" type="button" aria-label="Open cart">
+                    <span class="cart-icon" aria-hidden="true">🛒</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
             </div>
         </header>
 
@@ -29,11 +36,11 @@
             <div class="content-wrapper">
                 <!-- Category Tabs -->
                 <div class="category-tabs">
-                    <button class="tab-button active" onclick="switchTab('sports')">
+                    <button class="tab-button active" data-tab="sports" type="button">
                         <span class="tab-icon">🏋️</span>
                         Sports Equipment
                     </button>
-                    <button class="tab-button" onclick="switchTab('nutrition')">
+                    <button class="tab-button" data-tab="nutrition" type="button">
                         <span class="tab-icon">💊</span>
                         Supplements
                     </button>
@@ -467,20 +474,127 @@
     </div>
 
     <script>
-        function switchTab(tabName) {
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => {
+        const CART_STORAGE_KEY = 'myCoachCart';
+        let cartItemsCount = 0;
+
+        function getCartItems() {
+            try {
+                const storedItems = localStorage.getItem(CART_STORAGE_KEY);
+                const parsedItems = storedItems ? JSON.parse(storedItems) : [];
+                return Array.isArray(parsedItems) ? parsedItems : [];
+            } catch (error) {
+                console.warn('Unable to read cart items:', error);
+                return [];
+            }
+        }
+
+        function saveCartItems(items) {
+            localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+            cartItemsCount = items.length;
+        }
+
+        function parsePrice(priceText) {
+            if (typeof priceText !== 'string') {
+                return 0;
+            }
+
+            const sanitized = priceText.replace(/[^0-9.]/g, '');
+            const [integerPart = '0', decimalPart = ''] = sanitized.split('.');
+            const normalized = decimalPart ? `${integerPart}.${decimalPart}` : integerPart;
+            const parsed = Number(normalized);
+            return Number.isFinite(parsed) ? parsed : 0;
+        }
+
+        function switchTab(tabName, activeButtonElement) {
+            document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
 
-            const buttons = document.querySelectorAll('.tab-button');
-            buttons.forEach(button => {
+            document.querySelectorAll('.tab-button').forEach(button => {
                 button.classList.remove('active');
             });
 
-            document.getElementById(tabName).classList.add('active');
-            event.target.closest('.tab-button').classList.add('active');
+            const activeContent = document.getElementById(tabName);
+            if (activeContent) {
+                activeContent.classList.add('active');
+            } else {
+                console.warn(`Tab content not found for tab: ${tabName}`);
+            }
+
+            if (activeButtonElement) {
+                activeButtonElement.classList.add('active');
+            }
         }
+
+        function updateCartCount() {
+            const cartCount = document.getElementById('cartCount');
+            if (cartCount) {
+                cartCount.textContent = String(cartItemsCount);
+            }
+        }
+
+        function addToCart(productName, productPrice) {
+            const items = getCartItems();
+            items.push({
+                name: productName,
+                price: Number(productPrice) || 0
+            });
+            saveCartItems(items);
+            updateCartCount();
+            alert(`${productName} added to cart`);
+        }
+
+        function initTabs() {
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabName = button.getAttribute('data-tab');
+                    switchTab(tabName, button);
+                });
+            });
+        }
+
+        function initCartActions() {
+            document.querySelectorAll('.product-card').forEach(productCard => {
+                const productTitle = productCard.querySelector('h4');
+                if (productTitle && !productCard.dataset.productName) {
+                    productCard.dataset.productName = productTitle.textContent.trim();
+                }
+
+                const productPrice = productCard.querySelector('.price');
+                if (productPrice && !productCard.dataset.productPrice) {
+                    const normalizedPrice = parsePrice(productPrice.textContent);
+                    productCard.dataset.productPrice = String(normalizedPrice || 0);
+                }
+            });
+
+            document.querySelectorAll('.btn-add-cart').forEach(button => {
+                button.addEventListener('click', () => {
+                    const productCard = button.closest('.product-card');
+                    const productName = productCard?.dataset?.productName || 'Item';
+                    const productPrice = Number(productCard?.dataset?.productPrice || 0);
+                    addToCart(productName, productPrice);
+                });
+            });
+        }
+
+        function initCartButton() {
+            const cartButton = document.querySelector('.cart-button');
+            if (!cartButton) {
+                return;
+            }
+
+            cartButton.addEventListener('click', () => {
+                window.location.href = 'cart.html';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            cartItemsCount = getCartItems().length;
+            initTabs();
+            initCartActions();
+            initCartButton();
+            updateCartCount();
+        });
     </script>
 </body>
 </html>

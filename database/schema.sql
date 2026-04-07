@@ -1,4 +1,3 @@
-
 -- Delete to recreate
 drop function if exists public.set_updated_at cascade;
 drop function if exists public.handle_new_user cascade;
@@ -17,7 +16,6 @@ drop type if exists public.product_category cascade;
 drop type if exists public.user_role cascade;
 
 
-
 -- Types
 CREATE TYPE public.fitness_goal AS ENUM ('lose_weight', 'build_muscle', 'improve_endurance', 'stay_fit', 'maintain', 'performance');
 CREATE TYPE public.fitness_level AS ENUM ( 'beginner', 'intermediate', 'advanced' ); 
@@ -31,6 +29,7 @@ CREATE TYPE public.user_role AS ENUM ('user', 'admin');
 CREATE TABLE public.users (
     id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
     email text NOT NULL UNIQUE,
+    username text,
     first_name TEXT,
     last_name TEXT,
     avatar_url TEXT,
@@ -123,7 +122,7 @@ CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS trigger LANGUAGE plpgsql SECURITY DEFINER
 SET search_path = '' AS $$
 BEGIN
-  INSERT INTO public.users (id, email, first_name)
+  INSERT INTO public.users (id, email, username)
   VALUES (
     NEW.id,
     NEW.email,
