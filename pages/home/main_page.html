@@ -4,9 +4,10 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>My Coach - Dashboard</title>
+    <link rel="icon" type="image/png" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../assets/css/global.css" />
-    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="../../assets/css/global.css" />
+    <link rel="stylesheet" href="../../assets/css/home.css" />
   </head>
   <body>
     <header class="header">
@@ -31,17 +32,16 @@
 
         <ul class="links">
           <li><a href="#dashboard">Dashboard</a></li>
-          <li><a href="#programs">Programs</a></li>
-          <li><a href="#nutrition">Nutrition</a></li>
-          <li><a href="../../progress_tracking/progress_tracking.html">Progress</a></li>
-          <li><a href="#community">Community</a></li>
+          <li><a href="../p_p/personalized-programs.html">Programs</a></li>
+          <li><a href="../nutrition/nutrition-guidance.html">Nutrition</a></li>
+          <li><a href="../progress_tracking/progress_tracking.html">Progress Tracking</a></li>
+          <li><a href="../community_feed/community_feed.html">Community</a></li>
         </ul>
         <div class="buttons user-menu">
           <div class="user-avatar" id="userProfileBtn" title="User Profile" style="cursor: pointer;">
             <span id="userInitials">U</span>
           </div>
           <div class="user-profile-menu" id="userProfileMenu">
-            <a href="#settings" class="profile-menu-item">⚙️ Settings</a>
             <button class="profile-menu-item logout-item" id="signoutBtn">🚪 Logout</button>
           </div>
         </div>
@@ -92,7 +92,7 @@
             Access your personalized workout programs and track your training
             progress.
           </p>
-          <a href="#programs" class="card-action">View Programs →</a>
+          <a href="../p_p/training/training-programs.html" class="card-action">View Programs →</a>
         </div>
 
         <div class="dashboard-card">
@@ -102,7 +102,7 @@
             Follow your customized meal plans and nutritional guidance for
             optimal results.
           </p>
-          <a href="#nutrition" class="card-action">View Nutrition →</a>
+          <a href="../nutrition/nut_plans/nutrition-plans.html" class="card-action">View Nutrition →</a>
         </div>
 
         <a
@@ -136,7 +136,7 @@
             Browse and purchase fitness gear, supplements, and equipment
             recommended by your coach.
           </p>
-          <a href="#products" class="card-action">Shop Products →</a>
+          <a href="../products/products.html" class="card-action">Shop Products →</a>
         </div>
       </div>
     </section>
@@ -150,20 +150,20 @@
         <div class="footer-section">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#" class="footer-link" data-page="programs">Programs</a></li>
-            <li><a href="#" class="footer-link" data-page="nutrition">Nutrition</a></li>
-            <li><a href="#" class="footer-link" data-page="products">Products</a></li>
-            <li><a href="#" class="footer-link" data-page="progress">Progress</a></li>
-            <li><a href="#" class="footer-link" data-page="community">Community</a></li>
+            <li><a href="../p_p/personalized-programs.html" class="footer-link">Programs</a></li>
+            <li><a href="../nutrition/nutrition-guidance.html" class="footer-link">Nutrition</a></li>
+            <li><a href="../products/products.html" class="footer-link">Products</a></li>
+            <li><a href="../progress_tracking/progress_tracking.html" class="footer-link">Progress</a></li>
+            <li><a href="../community_feed/community_feed.html" class="footer-link">Community</a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h4>Support</h4>
           <ul>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
+            <li><a href="../support/faqs.html">FAQs</a></li>
+            <li><a href="../support/contact-us.html">Contact Us</a></li>
+            <li><a href="../support/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../support/terms-of-service.html">Terms of Service</a></li>
           </ul>
         </div>
         <div class="footer-section">
@@ -180,6 +180,6 @@
       </div>
     </footer>
   </body>
-  <script type="module" src="home.js"></script>
-  <script type="module" src="../assets/js/auth.js"></script>
+  <script type="module" src="../../assets/js/home.js"></script>
+  <script type="module" src="../../assets/js/auth.js"></script>
 </html>
