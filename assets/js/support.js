@@ -18,12 +18,12 @@ async function updateBackButtons() {
     if (!(button instanceof HTMLAnchorElement)) return;
 
     if (isLoggedIn) {
-      button.href = "../home/main_page.html";
+      button.href = "../../pages/dashboard";
       button.textContent = "Go to Dashboard";
       button.classList.remove("signin");
       button.classList.add("signup");
     } else {
-      button.href = "../welcome_page/welcome_page.html";
+      button.href = "../../";
       button.textContent = "Back to Main Page";
       button.classList.remove("signup");
       button.classList.add("signin");

@@ -1,134 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart - My Coach</title>
-    <link rel="icon" type="image/png" href="../../favicon.png">
-    <link rel="stylesheet" href="../../assets/css/products-styles.css">
-</head>
-<body>
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../assets/css/products.css" />
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <div class="header-content">
-                <div class="header-left">
-                    <h1>My Coach</h1>
-                    <nav>
-                        <a href="products.html" class="nav-link">Products</a>
-                        <a href="cart.html" class="nav-link active">Cart</a>
-                        <a href="payment.html" class="nav-link">Payment</a>
-                    </nav>
-                </div>
+      <header>
+        <div class="header-content">
+          <div class="header-left">
+            <nav>
+              <a href="../products" class="nav-link">Products</a>
+              <a href="" class="nav-link active">Cart</a>
+              <a href="payment.html" class="nav-link">Payment</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-section">
+          <div class="hero-content">
+            <div class="hero-icon">🧾</div>
+            <h2>Your Cart</h2>
+            <p>Review your selected products and total amount.</p>
+          </div>
+        </section>
+
+        <section class="tab-content active">
+          <h3>Cart Items</h3>
+          <div class="product-card" id="emptyCartMessage">
+            <h4>Your cart is empty.</h4>
+            <p class="product-description">
+              Go back to products and add items to continue.
+            </p>
+          </div>
+          <div class="products-grid" id="cartItemsContainer"></div>
+
+          <div
+            class="product-card"
+            id="cartSummary"
+            style="margin-top: 24px; padding: 20px"
+          >
+            <h4>Total</h4>
+            <p class="product-description">
+              <strong id="cartTotal">$0.00</strong>
+            </p>
+            <p
+              class="product-description"
+              id="paymentLinkMessage"
+              style="display: none"
+            >
+              Add at least one item to continue to payment.
+            </p>
+            <div class="price-section" style="padding: 0">
+              <a
+                class="btn-add-cart"
+                href="../products/"
+                style="text-align: center; text-decoration: none"
+                >Continue Shopping</a
+              >
+              <a
+                class="btn-add-cart"
+                href="payment.html"
+                style="text-align: center; text-decoration: none"
+                >Proceed to Payment</a
+              >
             </div>
-        </header>
+          </div>
+        </section>
+      </main>
 
-        <main>
-            <section class="hero-section">
-                <div class="hero-content">
-                    <div class="hero-icon">🧾</div>
-                    <h2>Your Cart</h2>
-                    <p>Review your selected products and total amount.</p>
-                </div>
-            </section>
-
-            <section class="tab-content active">
-                <h3>Cart Items</h3>
-                <div class="product-card" id="emptyCartMessage">
-                    <h4>Your cart is empty.</h4>
-                    <p class="product-description">Go back to products and add items to continue.</p>
-                </div>
-                <div class="products-grid" id="cartItemsContainer"></div>
-
-                <div class="product-card" id="cartSummary" style="margin-top: 24px; padding: 20px;">
-                    <h4>Total</h4>
-                    <p class="product-description"><strong id="cartTotal">$0.00</strong></p>
-                    <p class="product-description" id="paymentLinkMessage" style="display:none;">
-                        Add at least one item to continue to payment.
-                    </p>
-                    <div class="price-section" style="padding: 0;">
-                        <a class="btn-add-cart" href="products.html" style="text-align:center; text-decoration:none;">Continue Shopping</a>
-                        <a class="btn-add-cart" href="payment.html" style="text-align:center; text-decoration:none;">Proceed to Payment</a>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; 2026 My Coach. All rights reserved.</p>
-        </footer>
+      <footer>
+        <p>&copy; 2026 My Coach. All rights reserved.</p>
+      </footer>
     </div>
 
     <script>
-        const CART_STORAGE_KEY = 'myCoachCart';
+      const CART_STORAGE_KEY = "myCoachCart";
 
-        function getCartItems() {
-            try {
-                const storedItems = localStorage.getItem(CART_STORAGE_KEY);
-                const parsedItems = storedItems ? JSON.parse(storedItems) : [];
-                return Array.isArray(parsedItems) ? parsedItems : [];
-            } catch (error) {
-                console.warn('Unable to read cart items:', error);
-                return [];
-            }
+      function getCartItems() {
+        try {
+          const storedItems = localStorage.getItem(CART_STORAGE_KEY);
+          const parsedItems = storedItems ? JSON.parse(storedItems) : [];
+          return Array.isArray(parsedItems) ? parsedItems : [];
+        } catch (error) {
+          console.warn("Unable to read cart items:", error);
+          return [];
+        }
+      }
+
+      function formatPrice(value) {
+        return `$${Number(value).toFixed(2)}`;
+      }
+
+      function renderCart() {
+        const items = getCartItems();
+        const container = document.getElementById("cartItemsContainer");
+        const totalElement = document.getElementById("cartTotal");
+        const emptyMessage = document.getElementById("emptyCartMessage");
+        const paymentLink = document.querySelector('a[href="payment.html"]');
+        const paymentLinkMessage =
+          document.getElementById("paymentLinkMessage");
+
+        container.innerHTML = "";
+
+        if (items.length === 0) {
+          emptyMessage.style.display = "block";
+          if (paymentLink) {
+            paymentLink.style.pointerEvents = "none";
+            paymentLink.style.opacity = "0.6";
+            paymentLink.setAttribute("aria-disabled", "true");
+          }
+          if (paymentLinkMessage) {
+            paymentLinkMessage.style.display = "block";
+          }
+          totalElement.textContent = formatPrice(0);
+          return;
         }
 
-        function formatPrice(value) {
-            return `$${Number(value).toFixed(2)}`;
+        emptyMessage.style.display = "none";
+        if (paymentLink) {
+          paymentLink.style.pointerEvents = "auto";
+          paymentLink.style.opacity = "1";
+          paymentLink.removeAttribute("aria-disabled");
+        }
+        if (paymentLinkMessage) {
+          paymentLinkMessage.style.display = "none";
         }
 
-        function renderCart() {
-            const items = getCartItems();
-            const container = document.getElementById('cartItemsContainer');
-            const totalElement = document.getElementById('cartTotal');
-            const emptyMessage = document.getElementById('emptyCartMessage');
-            const paymentLink = document.querySelector('a[href="payment.html"]');
-            const paymentLinkMessage = document.getElementById('paymentLinkMessage');
-
-            container.innerHTML = '';
-
-            if (items.length === 0) {
-                emptyMessage.style.display = 'block';
-                if (paymentLink) {
-                    paymentLink.style.pointerEvents = 'none';
-                    paymentLink.style.opacity = '0.6';
-                    paymentLink.setAttribute('aria-disabled', 'true');
-                }
-                if (paymentLinkMessage) {
-                    paymentLinkMessage.style.display = 'block';
-                }
-                totalElement.textContent = formatPrice(0);
-                return;
-            }
-
-            emptyMessage.style.display = 'none';
-            if (paymentLink) {
-                paymentLink.style.pointerEvents = 'auto';
-                paymentLink.style.opacity = '1';
-                paymentLink.removeAttribute('aria-disabled');
-            }
-            if (paymentLinkMessage) {
-                paymentLinkMessage.style.display = 'none';
-            }
-
-            let total = 0;
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <h4>${item.name || 'Item'}</h4>
+        let total = 0;
+        items.forEach((item) => {
+          const card = document.createElement("div");
+          card.className = "product-card";
+          card.innerHTML = `
+                    <h4>${item.name || "Item"}</h4>
                     <p class="product-description">Quantity: 1</p>
                     <div class="price-section" style="padding-top: 0;">
                         <span class="price">${formatPrice(item.price || 0)}</span>
                     </div>
                 `;
-                container.appendChild(card);
-                total += Number(item.price) || 0;
-            });
+          container.appendChild(card);
+          total += Number(item.price) || 0;
+        });
 
-            totalElement.textContent = formatPrice(total);
-        }
+        totalElement.textContent = formatPrice(total);
+      }
 
-        document.addEventListener('DOMContentLoaded', renderCart);
+      document.addEventListener("DOMContentLoaded", renderCart);
     </script>
-</body>
+  </body>
 </html>
