@@ -1,4 +1,4 @@
-import { supabase } from "../assets/js/supabase_client.js";
+import { supabase } from "../../assets/js/supabase_client.js";
 // Simple connection test
 const { data, error } = await supabase.auth.getUser();
 
@@ -33,11 +33,10 @@ if (userProfileBtn && userProfileMenu) {
 document.addEventListener("DOMContentLoaded", () => {
   const footerLinks = document.querySelectorAll(".footer-link");
   const pageMap = {
-    programs: "#programs",
-    nutrition: "#nutrition",
-    products: "#products",
-    progress: "../progress_tracking/progress_tracking.html",
-    community: "../community_feed/community_feed.html",
+    programs: "../programs",
+    nutrition: "../nutrition",
+    products: "../products",
+    community: "../community/",
   };
 
   footerLinks.forEach((link) => {

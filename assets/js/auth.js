@@ -78,7 +78,7 @@ async function signin(email, password) {
     showToast(`Sign in error: ${error.message}`, "error");
   } else {
     console.log(":) signin successfull", data);
-    window.location.replace("../home/main_page.html");
+    window.location.replace("../dashboard/");
   }
 }
 
@@ -91,7 +91,7 @@ async function signout() {
     showToast("Sign out error" + error.message, "error");
   } else {
     console.log(":) signout successfull");
-    window.location.replace("../welcome_page/welcome_page.html");
+    window.location.replace("../../");
   }
 }
 
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       console.log("test home clicked!");
       sessionStorage.setItem(TEST_LOGIN_KEY, "true");
-      window.location.replace("../home/main_page.html");
+      window.location.replace("../dashboard/");
     });
   }
 });

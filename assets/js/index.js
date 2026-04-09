@@ -6,17 +6,17 @@ if (error) {
   console.log("Not Logged In:", error.message);
 } else {
   console.log(":) signin successful:", data);
-  window.location.replace("../home/main_page.html");
+  window.location.replace("pages/dashboard/");
 }
 
 // Footer links navigation
 const footerLinks = document.querySelectorAll(".footer-link");
 const pageMap = {
-  programs: "../p_p/personalized-programs.html",
-  nutrition: "../nutrition/nutrition-guidance.html",
-  products: "../products/products.html",
-  progress: "../progress_tracking/progress_tracking.html",
-  community: "../community_feed/community_feed.html",
+  programs: "pages/programs/",
+  nutrition: "pages/nutrition/",
+  products: "pages//products/",
+  progress: "pages/progress_tracking/",
+  community: "pages/community/",
 };
 
 footerLinks.forEach((link) => {
@@ -33,7 +33,7 @@ footerLinks.forEach((link) => {
       window.location.href = destination;
     } else {
       // User is not logged in, redirect to login
-      window.location.href = "../signin/index.html";
+      window.location.href = "pages/signin/index.html";
     }
   });
 });
