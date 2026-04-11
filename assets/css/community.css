@@ -95,6 +95,10 @@ body {
   gap: 1rem;
 }
 
+.user-menu {
+  position: relative;
+}
+
 .user-avatar img {
   width: 40px;
   height: 40px;
@@ -106,6 +110,42 @@ body {
 
 .user-avatar img:hover {
   transform: scale(1.1);
+}
+
+.user-profile-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(64, 124, 135, 0.15);
+  min-width: 160px;
+  display: none;
+  z-index: 1100;
+  overflow: hidden;
+}
+
+.user-profile-menu.active {
+  display: block;
+}
+
+.profile-menu-item {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: var(--dark);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: var(--ease);
+}
+
+.profile-menu-item:hover {
+  background: var(--surface);
+  color: var(--primary);
 }
 
 /* ========== MAIN CONTAINER LAYOUT ========== */
@@ -267,6 +307,10 @@ body {
   background: linear-gradient(135deg, #FFE8D6 0%, #FFD7B5 100%);
 }
 
+.rank-card.is-you {
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
 .rank-position {
   font-size: 0.8rem;
   color: var(--primary);
@@ -351,6 +395,11 @@ body {
 
 .leaderboard-item:hover {
   background: #DFF2F3;
+}
+
+.leaderboard-item.is-you {
+  border: 1px solid var(--primary);
+  background: linear-gradient(135deg, #eaf8f8 0%, #f5fbfc 100%);
 }
 
 .leaderboard-item .position {
@@ -563,6 +612,12 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.challenge-description {
+  font-size: 0.82rem;
+  color: #607276;
+  margin-bottom: 0.7rem;
+}
+
 .challenge-meta {
   display: flex;
   justify-content: space-between;
@@ -595,6 +650,53 @@ body {
   color: #999;
   min-width: 45px;
   text-align: right;
+}
+
+.challenge-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.challenge-btn {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--ease);
+}
+
+.join-btn {
+  background: var(--white);
+  color: var(--primary);
+}
+
+.join-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+  background: #f0f8fb;
+}
+
+.complete-btn {
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+}
+
+.complete-btn:hover:not(:disabled) {
+  background: #2d5a63;
+}
+
+.challenge-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.challenge-item.completed {
+  border-left-color: var(--primary);
+  background: linear-gradient(135deg, #e5f6f6 0%, #f2fbfb 100%);
 }
 
 /* ========== QUICK STATS ========== */

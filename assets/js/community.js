@@ -12,6 +12,9 @@ filterButtons.forEach((btn) => {
 
 const menuItems = document.querySelectorAll(".menu-item");
 const sections = document.querySelectorAll(".section");
+const userProfileBtn = document.getElementById("userProfileBtn");
+const userProfileMenu = document.getElementById("userProfileMenu");
+const signoutBtn = document.getElementById("signoutBtn");
 
 menuItems.forEach((item) => {
   item.addEventListener("click", function (e) {
@@ -19,8 +22,11 @@ menuItems.forEach((item) => {
     menuItems.forEach((m) => m.classList.remove("active"));
     this.classList.add("active");
 
-    const menuText = this.querySelector(".menu-text").textContent;
-    console.log(`Navigation: ${menuText}`);
+    const sectionId = this.dataset.section;
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   });
 });
 
@@ -41,11 +47,33 @@ const observer = new IntersectionObserver((entries) => {
       if (activeItem) {
         menuItems.forEach((item) => item.classList.remove("active"));
         activeItem.classList.add("active");
-        console.log(`Section in view: ${sectionId}`);
       }
     }
   });
 }, observerOptions);
+
 sections.forEach((section) => {
   observer.observe(section);
 });
+
+if (userProfileBtn && userProfileMenu) {
+  userProfileBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    userProfileMenu.classList.toggle("active");
+  });
+
+  document.addEventListener("click", (event) => {
+    if (
+      !userProfileBtn.contains(event.target) &&
+      !userProfileMenu.contains(event.target)
+    ) {
+      userProfileMenu.classList.remove("active");
+    }
+  });
+}
+
+if (signoutBtn) {
+  signoutBtn.addEventListener("click", () => {
+    window.location.href = "../signin/";
+  });
+}
