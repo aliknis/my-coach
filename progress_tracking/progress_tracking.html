@@ -13,106 +13,68 @@
 				<ul class="links">
 					<li><a href="../home/">Dashboard</a></li>
 					<li><a href="#overview">Overview</a></li>
-					<li><a href="#goals">Goals</a></li>
+					<li><a href="#challenges">Challenges</a></li>
 					<li><a href="#history">History</a></li>
 				</ul>
 			</nav>
 		</header>
 
 		<main class="container">
+			<!-- Hero — content injected by JS based on milestone -->
 			<section class="hero" id="overview">
-				<h2>Progress Tracking</h2>
-				<p>
-					Follow your workout consistency, body metrics, and nutrition goals in
-					one place.
-				</p>
+				<div class="hero-icon" id="heroIcon">💪</div>
+				<h2 id="heroTitle">Progress Tracking</h2>
+				<p id="heroSubtitle">Follow your workout consistency, body metrics, and nutrition goals in one place.</p>
+				<div class="hero-milestone" id="heroMilestone" style="display:none">
+					<span class="hero-badge" id="heroBadge"></span>
+					<span class="hero-pct" id="heroPct"></span>
+				</div>
 			</section>
 
+			<!-- Stats cards -->
 			<section class="stats-grid" aria-label="progress summary">
 				<article class="stat-card">
 					<h3>Current Streak</h3>
-					<!--juste lel test mb3d tet7at fhm des valeurs mel backend-->
-					<p class="stat-value">12 days</p>
-					<span class="stat-trend positive">2 active programs</span>
+					<p class="stat-value" id="statStreak">—</p>
+					<span class="stat-trend positive" id="statActivePrograms">Loading…</span>
 				</article>
 				<article class="stat-card">
 					<h3>Workouts Completed</h3>
-					<!--juste lel test mb3d tet7at fhm des valeurs mel backend-->
-					<p class="stat-value">18</p>
+					<p class="stat-value" id="statWorkouts">—</p>
 					<span class="stat-trend positive">This month</span>
 				</article>
 				<article class="stat-card">
 					<h3>Kg Lost</h3>
-					<p class="stat-value">4.7 kg</p>
-					<!--juste lel test mb3d tet7at fhm des valeurs mel backend-->
-					<span class="stat-trend neutral">84.5 kg → 79.8 kg</span>
+					<p class="stat-value" id="statKgLost">—</p>
+					<span class="stat-trend neutral" id="statWeightRange">Loading…</span>
 				</article>
 				<article class="stat-card">
 					<h3>Nutrition Score</h3>
-					<p class="stat-value">82%</p>
-					<!--juste lel test mb3d tet7at fhm des valeurs mel backend-->
-					<span class="stat-trend neutral">135g / 165g protein</span>
+					<p class="stat-value" id="statNutrition">—</p>
+					<span class="stat-trend neutral" id="statProtein">Loading…</span>
 				</article>
 			</section>
 
-			<section class="panel" id="goals">
+			<!-- Program Challenges -->
+			<section class="panel" id="challenges">
 				<div class="panel-head">
-					<h3>Active Goals</h3>
-					<div class="filters" role="tablist" aria-label="goal filter">
-						<button class="filter-btn active" data-filter="all">All</button>
-						<button class="filter-btn" data-filter="fitness">Fitness</button>
-						<button class="filter-btn" data-filter="nutrition">
-							Nutrition
-						</button>
-						<button class="filter-btn" data-filter="body">Body</button>
+					<h3>Program Challenges</h3>
+					<div class="filters" role="tablist" aria-label="challenge filter">
+						<button type="button" class="filter-btn active" data-filter="all">All</button>
+						<button type="button" class="filter-btn" data-filter="lose_weight">Lose Weight</button>
+						<button type="button" class="filter-btn" data-filter="build_muscle">Build Muscle</button>
+						<button type="button" class="filter-btn" data-filter="improve_endurance">Endurance</button>
+						<button type="button" class="filter-btn" data-filter="stay_fit">Stay Fit</button>
+						<button type="button" class="filter-btn" data-filter="completed">Completed</button>
 					</div>
 				</div>
-
-				<div class="goals-list" id="goalsList">
-					<article class="goal-card" data-category="fitness">
-						<div class="goal-top">
-							<h4>Program: Lean Strength (Week 4)</h4>
-							<span class="goal-badge">Fitness</span>
-						</div>
-						<div class="progress-row">
-							<div class="progress-track">
-								<div class="progress-fill" style="width: 80%"></div>
-							</div>
-							<!--juste lel test mb3d tet7at fhm des valeurs mel backend-->
-							<span class="progress-text">Day 4/5</span>
-						</div>
-					</article>
-
-					<article class="goal-card" data-category="nutrition">
-						<div class="goal-top">
-							<h4>Daily protein target</h4>
-							<span class="goal-badge">Nutrition</span>
-						</div>
-						<div class="progress-row">
-							<div class="progress-track">
-								<div class="progress-fill" style="width: 82%"></div>
-							</div>
-							<!--juste lel test mb3d tet7at fhm des valeurs mel backend-->
-							<span class="progress-text">135g / 165g</span>
-						</div>
-					</article>
-
-					<article class="goal-card" data-category="body">
-						<div class="goal-top">
-							<h4>Weight change since start</h4>
-							<span class="goal-badge">Body</span>
-						</div>
-						<div class="progress-row">
-							<div class="progress-track">
-								<div class="progress-fill" style="width: 56%"></div>
-							</div>
-							<!--juste lel test mb3d tet7at fhm des valeurs mel backend-->
-							<span class="progress-text">4.7 kg lost</span>
-						</div>
-					</article>
+				<div class="challenges-list" id="challengesList">
+					<div class="challenge-skeleton"></div>
+					<div class="challenge-skeleton"></div>
 				</div>
 			</section>
 
+			<!-- Weekly Activity Chart -->
 			<section class="panel" id="history">
 				<div class="panel-head">
 					<h3>Weekly Activity</h3>
@@ -121,19 +83,31 @@
 						<option value="last">Last week</option>
 					</select>
 				</div>
-
 				<div class="chart" id="weeklyChart" aria-label="workout chart">
-					<div class="bar" data-current="30" data-last="20"><span>Mon</span></div>
-					<div class="bar" data-current="70" data-last="45"><span>Tue</span></div>
-					<div class="bar" data-current="60" data-last="40"><span>Wed</span></div>
-					<div class="bar" data-current="90" data-last="65"><span>Thu</span></div>
-					<div class="bar" data-current="75" data-last="60"><span>Fri</span></div>
-					<div class="bar" data-current="50" data-last="30"><span>Sat</span></div>
-					<div class="bar" data-current="35" data-last="20"><span>Sun</span></div>
+					<div class="bar" data-day="Mon"><span>Mon</span></div>
+					<div class="bar" data-day="Tue"><span>Tue</span></div>
+					<div class="bar" data-day="Wed"><span>Wed</span></div>
+					<div class="bar" data-day="Thu"><span>Thu</span></div>
+					<div class="bar" data-day="Fri"><span>Fri</span></div>
+					<div class="bar" data-day="Sat"><span>Sat</span></div>
+					<div class="bar" data-day="Sun"><span>Sun</span></div>
 				</div>
 			</section>
 		</main>
 
+		<!-- Congrats Popup Modal -->
+		<div class="congrats-overlay" id="congratsOverlay">
+			<div class="congrats-card" id="congratsCard">
+				<div class="confetti-burst" id="confettiBurst"></div>
+				<div class="congrats-icon">🎉</div>
+				<h2 class="congrats-title">Well Done!</h2>
+				<p class="congrats-subtitle" id="congratsMessage">You reached the target!</p>
+				<p class="congrats-detail" id="congratsDetail"></p>
+				<button type="button" class="congrats-dismiss" id="congratsDismiss">Keep Going 💪</button>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 		<script type="module" src="progress_tracking.js"></script>
 	</body>
 </html>

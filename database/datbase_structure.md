@@ -8,7 +8,8 @@
 | --------------- | --------------------------------------- |
 | `users`         | Accounts and basic profile              |
 | `programs`      | Pre-made training programs              |
-| `user_progress` | Enrolled programs and current progress  |
+| `user_progress`                 | Enrolled programs and current progress (optional / legacy) |
+| `user_program_progress_history` | Timeline of progress per user per program (one row per day logged) |
 | `nutrition`     | Nutrition plans and daily user tracking |
 | `products`      | Equipment and supplement shop items     |
 | `orders`        | User purchases                          |
@@ -49,6 +50,7 @@
 | goal           | ENUM         | `lose_weight`, `build_muscle`, `improve_endurance`, `stay_fit` |
 | duration_weeks | INT          | Total number of weeks                                          |
 | days_per_week  | INT          | Workouts per week                                              |
+| progress_mode  | text         | `sessions` (default) = day-by-day steps; `cumulative_reps` = rep total stored in `user_program_progress_history.completed_day_index` up to `duration_weeks × days_per_week` |
 | is_published   | BOOLEAN      | Default: false                                                 |
 | created_at     | TIMESTAMP    |                                                                |
 | updated_at     | TIMESTAMP    |                                                                |
@@ -69,6 +71,29 @@
 | current_day  | INT       | Default: 1           |
 | created_at   | TIMESTAMP |                      |
 | updated_at   | TIMESTAMP |                      |
+
+---
+
+## user_program_progress_history
+
+Stores a **history** of how far each user has progressed in each program. At most one row per `(user_id, program_id, enrollment_id, progress_date)` (unique constraint). A user can enroll in the same program multiple times — each attempt gets a new `enrollment_id`. The progress tracking UI reads this table to compute current week/day, percent complete, streaks, and weekly activity.
+
+| Column                 | Type      | Details |
+| ---------------------- | --------- | ------- |
+| id                     | BIGINT    | Primary key (identity) |
+| user_id                | UUID      | FK → `users.id`, RLS: user can only access own rows |
+| program_id             | BIGINT    | FK → `programs.id` |
+| enrollment_id          | INT       | Enrollment attempt number (default: 1). Allows the same user to do the same program multiple times. |
+| progress_date          | DATE      | Calendar day the progress was recorded (used for streaks) |
+| completed_week         | INT       | Week number reached (≥ 1) |
+| completed_day          | INT       | Day-in-week reached (≥ 1) |
+| completed_day_index    | INT       | Absolute position: `(completed_week - 1) * days_per_week + completed_day` |
+| meta                   | JSONB     | Optional app metadata |
+| created_at             | TIMESTAMPTZ | Default: now() |
+
+**Formula:** `completed_day_index` should match the program's `days_per_week` from `programs`, e.g. for `days_per_week = 4`, week 2 day 1 → index `(2-1)*4 + 1 = 5`.
+
+**Multiple enrollments:** When restarting a completed challenge, the JS creates a new row with `enrollment_id = max + 1` and `completed_day_index = 0`. The UI always reads the latest enrollment per program.
 
 ---
 
@@ -128,9 +153,9 @@
 
 | Stat               | Source                                                           |
 | ------------------ | ---------------------------------------------------------------- |
-| Workouts Completed | Count rows in `user_progress` where `is_active = false` per user |
-| Active Programs    | Count rows in `user_progress` where `is_active = true` per user  |
-| Days Streak        | Consecutive distinct `updated_at` dates in `user_progress`       |
+| Workouts Completed | Progress UI: count of `user_program_progress_history` rows in the current month (by `progress_date`). Legacy: inactive rows in `user_progress`. |
+| Active Programs    | Progress UI: programs not yet completed from latest history (progress below 100%). Legacy: active rows in `user_progress`. |
+| Days Streak        | Progress UI: consecutive distinct `progress_date` values in `user_program_progress_history` for the user. Legacy: `user_progress.updated_at`. |
 | Kg Lost            | `users.starting_weight` minus `users.current_weight`             |
 
 ---
@@ -140,6 +165,7 @@
 ```
 users
  ├── user_progress (1:N) ──→ programs
+ ├── user_program_progress_history (1:N) ──→ programs
  ├── nutrition     (1:N)
  └── orders        (1:N) ──→ products
 ```
