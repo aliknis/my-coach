@@ -1,5 +1,7 @@
 import { supabase } from "./supabase_client.js";
 
+const TEST_LOGIN_KEY = "mycoach_test_login";
+
 function showToast(message, type = "success") {
   const toast = document.createElement("div");
   toast.textContent = message;
@@ -75,20 +77,21 @@ async function signin(email, password) {
     console.log("Sign in error", error.message);
     showToast(`Sign in error: ${error.message}`, "error");
   } else {
-    console.log("Sign in successfull", data);
-    window.location.replace("../home");
+    console.log(":) signin successfull", data);
+    window.location.replace("../dashboard/");
   }
 }
 
 async function signout() {
   const { error } = await supabase.auth.signOut();
+  sessionStorage.removeItem(TEST_LOGIN_KEY);
 
   if (error) {
     console.log("Sign out error", error.message);
     showToast("Sign out error" + error.message, "error");
   } else {
-    console.log("Sign out Successfull");
-    window.location.replace("../");
+    console.log(":) signout successfull");
+    window.location.replace("../../");
   }
 }
 
@@ -146,7 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (button) {
     button.addEventListener("click", () => {
       console.log("test home clicked!");
-      window.location.replace("../home");
+      sessionStorage.setItem(TEST_LOGIN_KEY, "true");
+      window.location.replace("../dashboard/");
     });
   }
 });

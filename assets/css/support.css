@@ -1,0 +1,56 @@
+.support-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 96px 24px 64px;
+}
+
+.support-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.support-hero h1 {
+  margin-bottom: 12px;
+}
+
+.support-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.support-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.support-card h2,
+.support-card h3 {
+  margin-bottom: 12px;
+}
+
+.support-card p,
+.support-card li {
+  line-height: 1.7;
+}
+
+.support-card ul {
+  padding-left: 20px;
+}
+
+.support-actions {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.support-actions a {
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.support-nav-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}

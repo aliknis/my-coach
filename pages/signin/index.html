@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Coach — Sign In</title>
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../assets/css/auth.css" />
+  </head>
+  <body>
+    <div class="card" id="card">
+      <a class="back-link" href="../../" aria-label="Go back to home">
+        <span aria-hidden="true">←</span>
+      </a>
+      <div class="teal-panel signin-side" id="tealPanel"></div>
+      <div class="brand signin-side" id="brand">My Coach</div>
+
+      <form id="signinForm">
+        <div class="form signup-form active" id="signupForm">
+          <div class="form-inner">
+            <p id="signupMsgBox"></p>
+            <input
+              type="email"
+              placeholder="📧 Email"
+              id="signinEmail"
+              autocomplete="email"
+              required
+            />
+            <input
+              type="password"
+              placeholder="🔐 Password"
+              id="signinPassword"
+              autocomplete="current-password"
+              required
+            />
+            <button type="submit">Sign In</button>
+            <p class="hint">
+              New here? <em><a class="toggle-link" href="../signup/index.html">Create an account</a></em>
+            </p>
+          </div>
+        </div>
+    </form>
+
+    <script type="module" src="../../assets/js/auth.js"></script>
+  </body>
+</html>

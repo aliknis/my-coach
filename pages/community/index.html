@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community - My Coach</title>
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <link rel="stylesheet" href="../../assets/css/community.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="../dashboard/">My Coach</a>
+        </div>
+
+        <ul class="links">
+          <li><a href="../dashboard/">Dashboard</a></li>
+          <li><a href="../programs/">Programs</a></li>
+          <li><a href="../nutrition/">Nutrition</a></li>
+          <li><a href="#" class="active">Community</a></li>
+          <li><a href="../products/">Products</a></li>
+        </ul>
+
+        <div class="nav-buttons user-menu">
+          <div class="user-avatar" id="userProfileBtn" title="User Profile">
+            <img src="../../assets/images/user.png" alt="User Profile" />
+          </div>
+          <div class="user-profile-menu" id="userProfileMenu">
+            <button class="profile-menu-item logout-item" id="signoutBtn">
+              🚪 Logout
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+      <!-- Left Sidebar -->
+      <aside class="sidebar-left">
+        <div class="sidebar-menu">
+          <a
+            href="#leaderboard"
+            class="menu-item active"
+            data-section="leaderboard"
+          >
+            <span class="menu-icon">🏆</span>
+            <span class="menu-text">Leaderboard</span>
+          </a>
+          <a href="#achievements" class="menu-item" data-section="achievements">
+            <span class="menu-icon">⭐</span>
+            <span class="menu-text">Achievements</span>
+          </a>
+          <a href="#stats" class="menu-item" data-section="stats">
+            <span class="menu-icon">📊</span>
+            <span class="menu-text">Stats</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Center Content -->
+      <main class="main-content">
+        <!-- Leaderboard Section -->
+        <section class="section" id="leaderboard">
+          <div class="section-header">
+            <h2 id="leaderboardSectionTitle">🏆 Weekly Leaderboard</h2>
+            <div class="filter-buttons">
+              <button
+                type="button"
+                class="filter-btn active"
+                data-filter="weekly"
+              >
+                This Week
+              </button>
+              <button type="button" class="filter-btn" data-filter="monthly">
+                This Month
+              </button>
+              <button type="button" class="filter-btn" data-filter="all-time">
+                All Time
+              </button>
+            </div>
+          </div>
+
+          <div class="leaderboard-container">
+            <div class="leaderboard-top-3" id="leaderboardTop3">
+              <p class="community-msg">Loading leaderboard…</p>
+            </div>
+            <div class="leaderboard-list" id="leaderboardList"></div>
+          </div>
+        </section>
+
+        <!-- Recent Achievements -->
+        <section class="section" id="achievements">
+          <div class="section-header">
+            <h2>⭐ Recent Achievements</h2>
+          </div>
+          <div class="achievements-grid" id="achievementsGrid">
+            <p class="community-msg">Loading activity…</p>
+          </div>
+        </section>
+
+        <!-- Community Stats -->
+        <section class="section" id="stats">
+          <div class="section-header">
+            <h2>📊 Community Stats</h2>
+          </div>
+          <div class="stats-grid" id="communityStatsGrid">
+            <p class="community-msg">Loading stats…</p>
+          </div>
+        </section>
+      </main>
+
+      <!-- Right Sidebar -->
+      <aside class="sidebar-right">
+        <!-- Active Challenges -->
+        <div class="widget">
+          <div class="widget-header">
+            <h3>🔥 Daily Challenges</h3>
+          </div>
+          <div class="challenges-list" id="dailyChallengesList">
+            <p class="community-msg">Loading challenges…</p>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="widget">
+          <div class="widget-header">
+            <h3>📈 Your Stats</h3>
+          </div>
+          <div class="quick-stats">
+            <div class="quick-stat">
+              <span class="stat-label">Your Rank</span>
+              <span class="stat-value" id="yourRankValue">—</span>
+            </div>
+            <div class="quick-stat">
+              <span class="stat-label">Your Points</span>
+              <span class="stat-value" id="yourPointsValue">—</span>
+            </div>
+            <div class="quick-stat">
+              <span class="stat-label">This Week</span>
+              <span class="stat-value" id="weekPointsValue">—</span>
+            </div>
+            <div class="quick-stat">
+              <span class="stat-label">Streak</span>
+              <span class="stat-value" id="streakValue">—</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <script type="module" src="../../assets/js/community.js"></script>
+    <script type="module" src="../../assets/js/auth.js"></script>
+  </body>
+</html>
