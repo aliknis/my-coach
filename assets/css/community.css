@@ -592,6 +592,14 @@ body {
   flex-direction: column;
   gap: 1.2rem;
 }
+.community-msg {
+  padding: 1rem 1.25rem;
+  color: var(--dark);
+  opacity: 0.85;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 
 .challenge-item {
   background: var(--surface);
@@ -692,6 +700,14 @@ body {
 .challenge-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.community-msg {
+  padding: 1rem 1.25rem;
+  color: var(--dark);
+  opacity: 0.85;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .challenge-item.completed {

@@ -65,15 +65,19 @@
         <!-- Leaderboard Section -->
         <section class="section" id="leaderboard">
           <div class="section-header">
-            <h2>🏆 Weekly Leaderboard</h2>
+            <h2 id="leaderboardSectionTitle">🏆 Weekly Leaderboard</h2>
             <div class="filter-buttons">
-              <button class="filter-btn active" data-filter="weekly">
+              <button
+                type="button"
+                class="filter-btn active"
+                data-filter="weekly"
+              >
                 This Week
               </button>
-              <button class="filter-btn" data-filter="monthly">
+              <button type="button" class="filter-btn" data-filter="monthly">
                 This Month
               </button>
-              <button class="filter-btn" data-filter="all-time">
+              <button type="button" class="filter-btn" data-filter="all-time">
                 All Time
               </button>
             </div>
@@ -81,42 +85,9 @@
 
           <div class="leaderboard-container">
             <div class="leaderboard-top-3" id="leaderboardTop3">
-              <div class="rank-card rank-2">
-                <div class="rank-position">2</div>
-                <img src="https://via.placeholder.com/80" alt="User" class="rank-avatar" />
-                <h3>Fatima</h3>
-                <p class="rank-badge coach">Coach</p>
-                <span class="rank-points">425 pts</span>
-                <div class="rank-bar"><div class="rank-fill" style="width: 92%"></div></div>
-              </div>
-              <div class="rank-card rank-1">
-                <div class="rank-position">1</div>
-                <img src="https://via.placeholder.com/80" alt="User" class="rank-avatar" />
-                <h3>Ahmed</h3>
-                <p class="rank-badge pro">Pro</p>
-                <span class="rank-points">460 pts</span>
-                <div class="rank-bar"><div class="rank-fill" style="width: 100%"></div></div>
-              </div>
-              <div class="rank-card rank-3">
-                <div class="rank-position">3</div>
-                <img src="https://via.placeholder.com/80" alt="User" class="rank-avatar" />
-                <h3>Sarah</h3>
-                <p class="rank-badge">Member</p>
-                <span class="rank-points">398 pts</span>
-                <div class="rank-bar"><div class="rank-fill" style="width: 87%"></div></div>
-              </div>
+              <p class="community-msg">Loading leaderboard…</p>
             </div>
-            <div class="leaderboard-list" id="leaderboardList">
-              <div class="leaderboard-item">
-                <span class="position">4</span>
-                <img src="https://via.placeholder.com/40" alt="User" />
-                <div class="item-info">
-                  <h4>You (test)</h4>
-                  <span class="badge badge-small">Member</span>
-                </div>
-                <span class="points">375 pts</span>
-              </div>
-            </div>
+            <div class="leaderboard-list" id="leaderboardList"></div>
           </div>
         </section>
 
@@ -126,12 +97,7 @@
             <h2>⭐ Recent Achievements</h2>
           </div>
           <div class="achievements-grid" id="achievementsGrid">
-            <div class="achievement-card">
-              <div class="achievement-icon">🔥</div>
-              <h3>You</h3>
-              <p>Completed test challenge</p>
-              <span class="time">Today</span>
-            </div>
+            <p class="community-msg">Loading activity…</p>
           </div>
         </section>
 
@@ -141,26 +107,7 @@
             <h2>📊 Community Stats</h2>
           </div>
           <div class="stats-grid" id="communityStatsGrid">
-            <div class="stat-box">
-              <div class="stat-number">120</div>
-              <div class="stat-label">Total Members</div>
-              <div class="stat-icon">👥</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-number">64</div>
-              <div class="stat-label">Challenges Completed</div>
-              <div class="stat-icon">✅</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-number">38</div>
-              <div class="stat-label">Active This Week</div>
-              <div class="stat-icon">📈</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-number">4,320</div>
-              <div class="stat-label">Points Distributed</div>
-              <div class="stat-icon">🎯</div>
-            </div>
+            <p class="community-msg">Loading stats…</p>
           </div>
         </section>
       </main>
@@ -173,18 +120,7 @@
             <h3>🔥 Daily Challenges</h3>
           </div>
           <div class="challenges-list" id="dailyChallengesList">
-            <div class="challenge-item">
-              <h4>💪 Test Challenge</h4>
-              <p class="challenge-description">Do 30 push-ups today (static test).</p>
-              <div class="challenge-meta">
-                <span>30 pts</span>
-                <span>Today only</span>
-              </div>
-              <div class="challenge-actions">
-                <button class="challenge-btn join-btn">Join</button>
-                <button class="challenge-btn complete-btn">Mark as done</button>
-              </div>
-            </div>
+            <p class="community-msg">Loading challenges…</p>
           </div>
         </div>
 
@@ -196,25 +132,26 @@
           <div class="quick-stats">
             <div class="quick-stat">
               <span class="stat-label">Your Rank</span>
-              <span class="stat-value" id="yourRankValue">#4</span>
+              <span class="stat-value" id="yourRankValue">—</span>
             </div>
             <div class="quick-stat">
               <span class="stat-label">Your Points</span>
-              <span class="stat-value" id="yourPointsValue">375 pts</span>
+              <span class="stat-value" id="yourPointsValue">—</span>
             </div>
             <div class="quick-stat">
               <span class="stat-label">This Week</span>
-              <span class="stat-value" id="weekPointsValue">95 pts</span>
+              <span class="stat-value" id="weekPointsValue">—</span>
             </div>
             <div class="quick-stat">
               <span class="stat-label">Streak</span>
-              <span class="stat-value" id="streakValue">3 days</span>
+              <span class="stat-value" id="streakValue">—</span>
             </div>
           </div>
         </div>
       </aside>
     </div>
 
-    <script src="../../assets/js/community.js"></script>
+    <script type="module" src="../../assets/js/community.js"></script>
+    <script type="module" src="../../assets/js/auth.js"></script>
   </body>
 </html>
