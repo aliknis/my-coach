@@ -78,6 +78,9 @@ CREATE TABLE public.users (
     fitness_level   fitness_level,
     dietary_pref    dietary_pref,
     days_per_week   integer,
+    is_active       boolean DEFAULT true,
+    bio             text,
+    total_points    integer DEFAULT 0,
     created_at      timestamptz NOT NULL DEFAULT now(),
     program_id bigint REFERENCES public.programs(id) ON DELETE SET NULL,
     nutrition_id bigint REFERENCES public.nutrition(id) ON DELETE SET NULL
