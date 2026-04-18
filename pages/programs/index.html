@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personalized Programs - My Coach</title>
-    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <title>Training Programs - My Coach</title>
+    <link rel="icon" type="image/png" href="../../../favicon.png" />
     <link rel="stylesheet" href="../../assets/css/programs.css" />
   </head>
   <body>
@@ -13,7 +13,8 @@
         <div class="header-content">
           <h1>My Coach</h1>
           <nav>
-            <a href="" class="nav-link active">Programs</a>
+            <a href="../../" class="nav-link active">Dashboard</a>
+            <a href="" class="nav-link active">Training</a>
           </nav>
         </div>
       </header>
@@ -21,135 +22,46 @@
       <main>
         <section class="hero-section">
           <div class="hero-content">
-            <div class="hero-icon">📋</div>
-            <h2>Personalized Programs</h2>
+            <h2>Training Programs</h2>
             <p>
-              Custom workout and nutrition programs tailored to your fitness
-              level and goals.
+              Choose your training style and find the perfect program for you.
             </p>
           </div>
         </section>
 
         <div class="content-wrapper">
-          <section class="form-section">
-            <form id="programsForm">
-              <h3>Your Information</h3>
+          <!-- Category Tabs -->
+          <div class="category-tabs">
+            <button
+              class="tab-button active"
+              onclick="switchTab('recommended')"
+            >
+              Recommended
+            </button>
+            <button class="tab-button" onclick="switchTab('selected')">
+              selected
+            </button>
+            <button class="tab-button" onclick="switchTab('all')">All</button>
+          </div>
 
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="age">Age</label>
-                  <input
-                    type="number"
-                    id="age"
-                    name="age"
-                    min="18"
-                    max="120"
-                    required
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="weight">Weight (kg)</label>
-                  <input
-                    type="number"
-                    id="weight"
-                    name="weight"
-                    min="30"
-                    step="0.1"
-                    required
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="height">Height (cm)</label>
-                  <input
-                    type="number"
-                    id="height"
-                    name="height"
-                    min="100"
-                    step="0.1"
-                    required
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="fitnessLevel">Current Fitness Level</label>
-                  <select id="fitnessLevel" name="fitnessLevel" required>
-                    <option value="">Select your level</option>
-                    <option value="beginner">Beginner</option>
-                    <option value="intermediate">Intermediate</option>
-                    <option value="advanced">Advanced</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group full-width">
-                <label>Fitness Goals (select all that apply)</label>
-                <div class="checkbox-grid">
-                  <label class="checkbox-label">
-                    <input type="checkbox" name="goals" value="weight-loss" />
-                    <span>Weight Loss</span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input type="checkbox" name="goals" value="muscle-gain" />
-                    <span>Muscle Gain</span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input type="checkbox" name="goals" value="endurance" />
-                    <span>Endurance</span>
-                  </label>
-                  <label class="checkbox-label">
-                    <input
-                      type="checkbox"
-                      name="goals"
-                      value="general-fitness"
-                    />
-                    <span>General Fitness</span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="availability">Hours Available Per Week</label>
-                <input
-                  type="number"
-                  id="availability"
-                  name="availability"
-                  min="0"
-                  max="168"
-                  step="0.5"
-                  required
-                />
-              </div>
-
-              <div class="form-group full-width">
-                <label for="limitations">Medical Conditions/Limitations</label>
-                <textarea
-                  id="limitations"
-                  name="limitations"
-                  rows="4"
-                  placeholder="Describe any injuries or conditions..."
-                ></textarea>
-              </div>
-
-              <button type="submit" class="btn-primary">Get My Program</button>
-            </form>
+          <!-- Recommended Programs Section -->
+          <section id="recommended" class="tab-content active">
+            <h3>Recommended Training Programs</h3>
+            <div class="programs-grid" id="recommended-content"></div>
           </section>
 
-          <section id="results" class="results-section hidden">
-            <h3>Your Recommended Program</h3>
-            <div class="results-grid">
-              <div class="result-card">
-                <div class="result-icon">💪</div>
-                <h4>Workout Plan</h4>
-                <p id="workoutPlan"></p>
-              </div>
-              <div class="result-card">
-                <div class="result-icon">🍎</div>
-                <h4>Nutrition Plan</h4>
-                <p id="nutritionPlan"></p>
-              </div>
+          <!-- Selected Training Program Section -->
+          <section id="selected" class="tab-content">
+            <h3>Selected Training Programs</h3>
+            <div class="programs-grid" id="selected-content">
+              <div class="program-card">No Program Selected Yet</div>
             </div>
+          </section>
+
+          <!-- All Training Programs Section -->
+          <section id="all" class="tab-content">
+            <h3>All Training Programs</h3>
+            <div class="programs-grid" id="all-content"></div>
           </section>
         </div>
       </main>
@@ -159,5 +71,26 @@
       </footer>
     </div>
   </body>
-</html>
+  <script>
+    function switchTab(tabName) {
+      // Hide all tab contents
+      const contents = document.querySelectorAll(".tab-content");
+      contents.forEach((content) => {
+        content.classList.remove("active");
+      });
 
+      // Remove active class from all buttons
+      const buttons = document.querySelectorAll(".tab-button");
+      buttons.forEach((button) => {
+        button.classList.remove("active");
+      });
+
+      // Show selected tab
+      document.getElementById(tabName).classList.add("active");
+
+      // Add active class to clicked button
+      event.target.closest(".tab-button").classList.add("active");
+    }
+  </script>
+  <script type="module" src="../../assets/js/programs.js"></script>
+</html>

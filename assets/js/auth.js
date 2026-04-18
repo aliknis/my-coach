@@ -1,7 +1,5 @@
 import { supabase } from "./supabase_client.js";
 
-const TEST_LOGIN_KEY = "mycoach_test_login";
-
 function showToast(message, type = "success") {
   const toast = document.createElement("div");
   toast.textContent = message;
@@ -84,8 +82,6 @@ async function signin(email, password) {
 
 async function signout() {
   const { error } = await supabase.auth.signOut();
-  sessionStorage.removeItem(TEST_LOGIN_KEY);
-
   if (error) {
     console.log("Sign out error", error.message);
     showToast("Sign out error" + error.message, "error");
@@ -139,18 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       console.log("Sign out clicked!");
       signout();
-    });
-  }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("testHomeBtn");
-
-  if (button) {
-    button.addEventListener("click", () => {
-      console.log("test home clicked!");
-      sessionStorage.setItem(TEST_LOGIN_KEY, "true");
-      window.location.replace("../dashboard/");
     });
   }
 });

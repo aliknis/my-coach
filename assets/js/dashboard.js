@@ -29,31 +29,31 @@ if (userProfileBtn && userProfileMenu) {
   });
 }
 
-// Footer links navigation
-document.addEventListener("DOMContentLoaded", () => {
-  const footerLinks = document.querySelectorAll(".footer-link");
-  const pageMap = {
-    programs: "../programs",
-    nutrition: "../nutrition",
-    products: "../products",
-    community: "../community/",
-  };
-
-  footerLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const page = link.getAttribute("data-page");
-      const destination = pageMap[page];
-
-      // For Progress and Community, always navigate to the page
-      if (destination.includes(".html")) {
-        window.location.href = destination;
-      } else {
-        // For Programs, Nutrition, Products, scroll to section
-        document
-          .querySelector(destination)
-          ?.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  });
-});
+// // Footer links navigation
+// document.addEventListener("DOMContentLoaded", () => {
+//   const footerLinks = document.querySelectorAll(".footer-link");
+//   const pageMap = {
+//     programs: "../programs",
+//     nutrition: "../nutrition",
+//     products: "../products",
+//     community: "../community/",
+//   };
+//
+//   footerLinks.forEach((link) => {
+//     link.addEventListener("click", (e) => {
+//       e.preventDefault();
+//       const page = link.getAttribute("data-page");
+//       const destination = pageMap[page];
+//
+//       // For Progress and Community, always navigate to the page
+//       if (destination.includes(".html")) {
+//         window.location.href = destination;
+//       } else {
+//         // For Programs, Nutrition, Products, scroll to section
+//         document
+//           .querySelector(destination)
+//           ?.scrollIntoView({ behavior: "smooth" });
+//       }
+//     });
+//   });
+// });
