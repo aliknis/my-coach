@@ -1,0 +1,97 @@
+@startuml Authentication_Sequence
+
+title Authentication Sequence Diagram for My Coach
+
+actor User
+participant "Frontend (Client)" as Frontend
+participant "Backend (Server)" as Backend
+participant "Database" as Database
+
+User -> Frontend: Enters email/password\nClicks "Sign In"
+Frontend -> Backend: POST /api/auth/signin\n{email, password}
+
+alt Valid credentials
+    Backend -> Database: Query user by email\n(SELECT * FROM users WHERE email = ?)
+    Database --> Backend: Returns user record
+    Backend -> Backend: Validates password\n(e.g., bcrypt.compare())
+    Backend --> Frontend: {success: true, token: "xyz123", user: {...}}
+    Frontend -> Frontend: Stores token in localStorage\nlocalStorage.setItem("authToken", "xyz123")
+    Frontend --> User: Redirects to dashboard
+else Invalid credentials
+    Backend --> Frontend: {success: false, error: "Invalid email or password"}
+    Frontend --> User: Shows error message
+end
+
+@enduml
+
+@startuml Choose_Program_Sequence
+
+title Sequence Diagram: User Chooses a Training Program
+
+actor User
+participant "Frontend" as Frontend
+participant "Backend" as Backend
+participant "Database" as Database
+
+User -> Frontend: Navigates to "Programs" page
+Frontend -> Backend: GET /api/programs/recommended\n(Fetches recommended programs)
+Backend -> Database: Query recommended programs\n(SELECT * FROM programs WHERE is_published = true AND goal = user_goal)
+Database --> Backend: Returns list of programs
+Backend --> Frontend: {success: true, programs: [...]}
+
+User -> Frontend: Clicks "Select Program"\n(Program ID: 123)
+Frontend -> Backend: POST /api/user/program\n{user_id: 456, program_id: 123}
+Backend -> Database: Update user program\n(UPDATE users SET program_id = 123 WHERE id = 456)
+Database --> Backend: Confirmation
+Backend --> Frontend: {success: true, message: "Program selected"}
+Frontend --> User: Shows success message\nRedirects to program details
+
+@enduml
+
+@startuml Choose_Nutrition_Sequence
+
+title Sequence Diagram: User Chooses a Nutrition Plan
+
+actor User
+participant "Frontend" as Frontend
+participant "Backend" as Backend
+participant "Database" as Database
+
+User -> Frontend: Navigates to "Nutrition" page
+Frontend -> Backend: GET /api/nutrition/recommended\n(Fetches recommended nutrition plans)
+Backend -> Database: Query recommended plans\n(SELECT * FROM nutrition WHERE is_published = true AND dietary_pref = user_dietary_pref)
+Database --> Backend: Returns list of nutrition plans
+Backend --> Frontend: {success: true, nutrition_plans: [...]}
+
+User -> Frontend: Clicks "Select Nutrition Plan"\n(Nutrition ID: 789)
+Frontend -> Backend: POST /api/user/nutrition\n{user_id: 456, nutrition_id: 789}
+Backend -> Database: Update user nutrition\n(UPDATE users SET nutrition_id = 789 WHERE id = 456)
+Database --> Backend: Confirmation
+Backend --> Frontend: {success: true, message: "Nutrition plan selected"}
+Frontend --> User: Shows success message\nRedirects to nutrition details
+
+@enduml
+
+@startuml Fill_Profile_Sequence
+
+title Sequence Diagram: User Fills Profile Form
+
+actor User
+participant "Frontend" as Frontend
+participant "Backend" as Backend
+participant "Database" as Database
+
+User -> Frontend: Navigates to "Profile" page
+Frontend -> Backend: GET /api/user/profile\n(Fetches current user profile)
+Backend -> Database: Query user profile\n(SELECT * FROM users WHERE id = 456)
+Database --> Backend: Returns user data
+Backend --> Frontend: {success: true, user: {...}}
+
+User -> Frontend: Fills form and clicks "Update"\n{height: 180, weight: 75, goal: "lose_weight", ...}
+Frontend -> Backend: PUT /api/user/profile\n{user_id: 456, profile_data: {...}}
+Backend -> Database: Update user profile\n(UPDATE users SET height = 180, weight = 75, ... WHERE id = 456)
+Database --> Backend: Confirmation
+Backend --> Frontend: {success: true, message: "Profile updated"}
+Frontend --> User: Shows success message\nRedirects to dashboard
+
+@enduml
