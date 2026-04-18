@@ -1,4 +1,4 @@
-import { supabase } from "../../assets/js/supabase_client.js";
+import { supabase } from "./supabase_client.js";
 
 const PLACEHOLDER_AVATAR = "../../assets/images/user.png";
 
@@ -256,16 +256,19 @@ function renderLeaderboard(rows, currentUserId) {
   top3.innerHTML = top
     .map((r) => {
       const visualPos = rows.indexOf(r) + 1;
-      const pct = Math.round((Number(r.total_points) / maxPts) * 100);
+      const pts = Number(r.total_points) || 0;
+      const pct = Math.round((pts / maxPts) * 100);
       const cardClass =
         visualPos === 1 ? "rank-1" : visualPos === 2 ? "rank-2" : "rank-3";
-      return `
-      <div class="rank-card ${cardClass}">
-        <div class="rank-position">${visualPos}</div>
-        <img src="${escapeHtml(avatarSrc(r.avatar_url))}" alt="" class="rank-avatar" />
-        <h3>${escapeHtml(r.display_name)}</h3>
+      
+      const initials = (r.display_name || "M").charAt(0).toUpperCase();
 
-        <span class="rank-points">${formatNumber(r.total_points)} pts</span>
+      return `
+      <div class="rank-card ${cardClass}${r.user_id === currentUserId ? " is-you" : ""}">
+        <div class="rank-position">${visualPos}</div>
+        <div class="user-initials-avatar">${initials}</div>
+        <h3>${escapeHtml(r.display_name)}</h3>
+        <span class="rank-points">${formatNumber(pts)} pts</span>
         <div class="rank-bar"><div class="rank-fill" style="width:${pct}%"></div></div>
       </div>`;
     })
@@ -279,10 +282,9 @@ function renderLeaderboard(rows, currentUserId) {
         return `
     <div class="leaderboard-item${you}">
       <span class="position">${r.rank}</span>
-      <img src="${escapeHtml(avatarSrc(r.avatar_url))}" alt="" />
+      <div class="user-initials-avatar small">${(r.display_name || "M").charAt(0).toUpperCase()}</div>
       <div class="item-info">
         <h4>${escapeHtml(r.display_name)}${r.user_id === currentUserId ? " (you)" : ""}</h4>
-
       </div>
       <span class="points">${formatNumber(r.total_points)} pts</span>
     </div>`;
