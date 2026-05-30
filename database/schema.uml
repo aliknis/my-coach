@@ -1,0 +1,134 @@
+@startuml
+
+' Tables
+class Users {
+  + id (uuid)
+  + email (text)
+  + username (text)
+  + first_name (text)
+  + last_name (text)
+  + avatar_url (text)
+  + role (user_role)
+  + date_of_birth (date)
+  + height_cm (numeric)
+  + starting_weight (numeric)
+  + current_weight (numeric)
+  + fitness_goal (fitness_goal)
+  + fitness_level (fitness_level)
+  + dietary_pref (dietary_pref)
+  + days_per_week (integer)
+  + is_active (boolean)
+  + bio (text)
+  + total_points (integer)
+  + created_at (timestamptz)
+  + program_id (bigint)
+  + nutrition_id (bigint)
+}
+
+class Programs {
+  + id (bigint)
+  + title (text)
+  + description (text)
+  + details_html (text)
+  + goal (fitness_goal)
+  + level (fitness_level)
+  + days_per_week (integer)
+  + duration_weeks (integer)
+  + is_published (boolean)
+  + created_at (timestamptz)
+}
+
+class Nutrition {
+  + id (bigint)
+  + title (text)
+  + description (text)
+  + details_html (text)
+  + goal (fitness_goal)
+  + dietary_pref (dietary_pref)
+  + calories_target (integer)
+  + protein_g (integer)
+  + carbs_g (integer)
+  + fats_g (integer)
+  + is_published (boolean)
+  + created_at (timestamptz)
+}
+
+class Products {
+  + id (bigint)
+  + name (text)
+  + category (product_category)
+  + description (text)
+  + price (numeric)
+  + stock_qty (integer)
+  + created_at (timestamptz)
+}
+
+class Orders {
+  + id (bigint)
+  + user_id (uuid)
+  + product_id (bigint)
+  + quantity (integer)
+  + unit_price (numeric)
+  + status (order_status)
+  + created_at (timestamptz)
+}
+
+class CommunityChallengeTemplates {
+  + id (bigint)
+  + difficulty (challenge_difficulty)
+  + points (integer)
+  + title (text)
+  + description (text)
+  + created_at (timestamptz)
+}
+
+class CommunityDailyChallenges {
+  + id (uuid)
+  + challenge_date (date)
+  + difficulty (challenge_difficulty)
+  + points (integer)
+  + title (text)
+  + description (text)
+  + created_at (timestamptz)
+}
+
+class UserChallengeCompletions {
+  + id (uuid)
+  + user_id (uuid)
+  + challenge_id (uuid)
+  + points_earned (integer)
+  + completed_at (timestamptz)
+}
+
+class CommunityComments {
+  + id (uuid)
+  + user_id (uuid)
+  + challenge_id (uuid)
+  + content (text)
+  + created_at (timestamptz)
+}
+
+class CommunityReactions {
+  + id (uuid)
+  + user_id (uuid)
+  + challenge_id (uuid)
+  + reaction_type (text)
+  + created_at (timestamptz)
+}
+
+' Relationships
+Users "1" *-- "0..*" Programs : program_id >
+Users "1" *-- "0..*" Nutrition : nutrition_id >
+Orders "1" *-- "1" Users : user_id
+Orders "1" *-- "1" Products : product_id
+
+Users "1" *-- "0..*" UserChallengeCompletions : user_id
+Users "1" *-- "0..*" CommunityComments : user_id
+Users "1" *-- "0..*" CommunityReactions : user_id
+
+CommunityChallengeTemplates "1" *-- "0..*" CommunityDailyChallenges : id >
+CommunityDailyChallenges "1" *-- "0..*" UserChallengeCompletions : challenge_id
+CommunityDailyChallenges "1" *-- "0..*" CommunityComments : challenge_id
+CommunityDailyChallenges "1" *-- "0..*" CommunityReactions : challenge_id
+
+@enduml

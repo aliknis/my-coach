@@ -4,4 +4,4 @@ Your gym assistant
 
 ## Live App
 
-https://titanknis.github.io/my-coach/
+https://aliknis.github.io/my-coach/
